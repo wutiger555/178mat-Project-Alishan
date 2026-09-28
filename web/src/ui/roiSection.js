@@ -9,6 +9,7 @@ const FIELDS = [
   { k: 'serviceCost', label: '服務成本／入口／月', min: 300, max: 2000, step: 50, fmt: (v) => 'NT$' + v.toLocaleString(), hint: '凹槽清潔、換毯攤提、雲端、LINE' },
   { k: 'hwPrice', label: 'Smart 模組加價／入口', min: 0, max: 40000, step: 1000, fmt: (v) => 'NT$' + v.toLocaleString() },
   { k: 'hwCost', label: '模組＋閘道＋安裝成本', min: 2000, max: 15000, step: 500, fmt: (v) => 'NT$' + v.toLocaleString() },
+  { k: 'partnerCut', label: '平均通路分潤', min: 0, max: 0.4, step: 0.05, fmt: (v) => Math.round(v * 100) + '%', hint: '經由物業公司／清潔商賣出時分給對方的比例' },
   { k: 'renewal', label: '年續約率', min: 0.6, max: 0.98, step: 0.01, fmt: (v) => Math.round(v * 100) + '%' },
   { k: 'upfront', label: '一次性投入（原型、模具、開發）', min: 100000, max: 2000000, step: 50000, fmt: nt },
   { k: 'fixedPerYear', label: '每年固定成本', min: 0, max: 3000000, step: 100000, fmt: nt, hint: '雲端、客服、部分人力' },

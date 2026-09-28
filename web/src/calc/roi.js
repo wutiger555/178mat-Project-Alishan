@@ -9,6 +9,7 @@ export const ROI_DEFAULTS = {
   monthlyFee: 2500, // Alishan Care 月費／入口
   serviceCost: 900, // 每入口每月服務成本（凹槽清潔攤提、換毯攤提、雲端、LINE 訊息）
   renewal: 0.9, // 年續約率
+  partnerCut: 0.1, // 平均通路分潤（例：一半的入口經由物業公司賣、分潤 20% → 10%）
   upfront: 300000, // 一次性投入（POC、原型、模具、開發）
   fixedPerYear: 600000, // 年固定成本（雲端、客服、部分人力）
   legacyMargin: 15000, // 傳統一次銷售每入口毛利（對照用）
@@ -45,7 +46,7 @@ export function computeRoi(input = {}) {
     const adds = newEntrancesInYear(p, y) / 12;
     active = active * survive + adds;
     totalNew += adds;
-    const rev = active * p.monthlyFee + adds * p.hwPrice;
+    const rev = active * p.monthlyFee * (1 - p.partnerCut) + adds * p.hwPrice;
     const cogs = active * p.serviceCost + adds * p.hwCost;
     const fixed = p.fixedPerYear / 12;
     revenue += rev;
@@ -67,7 +68,7 @@ export function computeRoi(input = {}) {
       entrancesAdded: totalNew,
       activeEnd: active,
     },
-    arrEnd: active * p.monthlyFee * 12,
+    arrEnd: active * p.monthlyFee * (1 - p.partnerCut) * 12,
     breakevenMonth,
     unit,
   };
@@ -81,7 +82,7 @@ export function unitEconomics(input = {}) {
   const p = { ...ROI_DEFAULTS, ...input };
   let expectedYears = 0;
   for (let k = 0; k < 10; k++) expectedYears += Math.pow(p.renewal, k);
-  const monthlyContribution = p.monthlyFee - p.serviceCost;
+  const monthlyContribution = p.monthlyFee * (1 - (p.partnerCut || 0)) - p.serviceCost;
   const hwContribution = p.hwPrice - p.hwCost;
   const ltv = hwContribution + monthlyContribution * 12 * expectedYears;
   const paybackMonths = hwContribution >= 0 ? 0 : Math.ceil(-hwContribution / Math.max(1, monthlyContribution));
