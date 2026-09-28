@@ -7,7 +7,7 @@ const WEEKS = 13;
 export const TASKS = [
   { track: 'tech', w: [1, 1], t: '下單零件、樣品放進木框凹槽', who: '提案人' },
   { track: 'tech', w: [1, 2], t: '蓋上鋁框後測訊號：LoRa 920 MHz／BLE／4G', who: '提案人' },
-  { track: 'tech', w: [2, 3], t: '壓電計數、荷重秤砂（50／100／200 g）', who: '提案人' },
+  { track: 'tech', w: [2, 3], t: '壓電計步準確度；電容電極倒砂測試（50／100／200 g）', who: '提案人' },
   { track: 'tech', w: [3, 4], t: 'Cloudflare 後端＋LINE 官方帳號通知', who: '提案人＋AI' },
   { track: 'dp', w: [4, 4], t: '決定點①：公司門口實測一週、看影片，決定要不要進第 1 階段', who: '董事長' },
   { track: 'tech', w: [5, 8], t: '模組艙：鋁框端蓋＋灌膠；PCB Layout 與外包審查', who: '胎壓計工廠＋提案人' },

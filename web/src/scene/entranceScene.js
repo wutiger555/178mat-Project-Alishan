@@ -95,7 +95,7 @@ export function initEntranceScene() {
   const rand = mulberry32(99);
 
   // --- 地墊 ---
-  const mat = buildMat({ widthM: MAT_W, depthM: MAT_D, layout: LAYOUTS.hotel.seq, floor: false, sensors: 'new', drain: false, cableSpacingM: 0.45 });
+  const mat = buildMat({ widthM: MAT_W, depthM: MAT_D, layout: LAYOUTS.hotel.seq, floor: false, sensors: false, drain: false, cableSpacingM: 0.45 });
   scene.add(mat.root);
   const hx = mat.info.innerHalfX + 0.005;
   const hz = mat.info.innerHalfZ + 0.005;

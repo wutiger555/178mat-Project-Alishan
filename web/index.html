@@ -154,17 +154,13 @@
               <div class="seg" role="group" aria-label="檢視模式">
                 <button class="on" data-mode="assembled">組合</button>
                 <button data-mode="explode">爆炸圖</button>
-                <button data-mode="section">剖面</button>
+                <button data-mode="section">剖面 A</button>
+                <button data-mode="sectionB">剖面 B</button>
               </div>
+              <p class="note">剖面 A 橫切鋁條，看感測底座條和電極；剖面 B 切過邊框端部的模組艙。</p>
               <h4>面材配置</h4>
               <div class="layouts" id="layoutBtns"></div>
               <div id="finishSwatches" class="swatch-groups"></div>
-              <h4>感測版本</h4>
-              <div class="seg small" role="group" aria-label="感測版本">
-                <button class="on" data-sensor="new">新案內建</button>
-                <button data-sensor="retrofit">舊案改裝</button>
-              </div>
-              <p class="note" id="sensorNote"></p>
               <h4>入口尺寸</h4>
               <label class="range">寬（鋁條長度）<output id="wOut">0.6 m</output><input type="range" id="wIn" min="0.6" max="3" step="0.1" value="0.6" /></label>
               <label class="range">深（行進方向）<output id="dOut">0.5 m</output><input type="range" id="dIn" min="0.4" max="2" step="0.1" value="0.5" /></label>
@@ -172,9 +168,111 @@
             </aside>
           </div>
           <div class="three-up">
-            <div class="panel"><h3>新案：出貨就內建</h3><p>凹槽多挖 5 mm，四個角放扁平荷重元，<strong>每小時量一次總重</strong>，慢慢增加的重量就是凹槽積了多少砂。踩踏交給壓電感測底座條，<strong>被踩到時自己就會產生訊號</strong>，可以直接喚醒模組、計算人次。</p></div>
-            <div class="panel"><h3>舊案：換一條底座就升級</h3><p>PVC 避震底座本來就是可以換的零件。把其中 2 條換成壓電感測底座條，邊框角落再加 ToF 量積砂高度。<strong>400+ 個既有案場都能改裝</strong>，不用重新施工。</p></div>
-            <div class="panel"><h3>模組艙：藏在邊框端</h3><p>電池、MCU、無線模組灌膠密封，放在實心鋁邊框的端部，不在踩踏面上。上蓋是非金屬天線窗，跟地坪齊平。</p></div>
+            <div class="panel"><h3>不動鋁條、不動施工</h3><p>鋁擠型、面材、鋼索、施工四步驟<strong>全部照舊</strong>。踩踏面上沒有任何電子零件，客人看不出差別。</p></div>
+            <div class="panel"><h3>只多三樣東西</h3><p>① 幾條<strong>壓電感測底座條</strong>（外形跟原本的 PVC 底座一樣）；② 凹槽底的<strong>電極條</strong>；③ 邊框端的<strong>模組艙</strong>。舊案改裝也是換這三樣。</p></div>
+            <div class="panel"><h3>下一章看細節</h3><p>每一種感測器是什麼、原理、放在哪裡、怎麼撐過髒污和日曬，以及國外哪些領域已經這樣做，都在下一章的「感測器實驗室」。</p></div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- 感測器實驗室 -->
+      <section id="sensors" class="slide" data-title="感測器">
+        <div class="wrap wide">
+          <header class="sec-head">
+            <p class="kicker"><span>05</span>感測器實驗室</p>
+            <h2>感測器是什麼、放在哪、怎麼用、為什麼撐得住</h2>
+            <p class="lede">三個原則：<strong>踩踏面上不放任何電子零件</strong>、<strong>不改鋁條和施工</strong>、<strong>每一種做法都有別的領域已經用了很多年</strong>。點左邊的卡片，3D 會移到那個感測器；按「人走過」看它實際怎麼產生訊號。</p>
+          </header>
+          <div class="lab">
+            <nav class="lab-cards" id="labCards" aria-label="感測器列表"></nav>
+            <div class="lab-stage">
+              <div class="viewer lab-viewer" id="labViewer" aria-label="感測器 3D 特寫">
+                <div class="viewer-hint">拖曳旋轉・滾輪縮放</div>
+                <div class="lab-log" id="labLog" aria-live="polite"></div>
+              </div>
+              <div class="lab-controls">
+                <div class="seg" role="group" aria-label="示範">
+                  <button data-demo="walk">👣 人走過</button>
+                  <button data-demo="cart">🛒 推車經過</button>
+                  <button data-demo="wash">💦 高壓沖洗</button>
+                </div>
+                <div class="install" id="install">
+                  <button class="btn small" data-step="-1" aria-label="上一步">◀</button>
+                  <span id="stepLabel">安裝步驟</span>
+                  <button class="btn small" data-step="1" aria-label="下一步">▶</button>
+                </div>
+              </div>
+              <p class="step-cap" id="stepCap">按 ▶ 看一個既有案場怎麼改裝（新案在工廠就先做好）。</p>
+              <figure class="wave">
+                <figcaption>壓電感測線的電壓（每一條線一行）<small>虛線是喚醒門檻；超過門檻時，模組醒來記一筆，接著回到睡眠</small></figcaption>
+                <canvas id="waveCanvas" height="170"></canvas>
+              </figure>
+            </div>
+            <article class="lab-detail" id="labDetail"></article>
+          </div>
+
+          <h3 class="sub-h">別的領域早就這樣做了</h3>
+          <table class="partners analog">
+            <thead><tr><th>領域</th><th>他們怎麼做</th><th>關鍵數字</th><th>我們學到什麼</th></tr></thead>
+            <tbody>
+              <tr><th>道路車軸計數</th><td>TE RoadTrax BL 壓電線：PVDF 包在黃銅扁管裡，埋進路面溝槽、用環氧樹脂灌封</td><td>1.6 × 6.6 mm；壽命 4,000 萬軸次；-40～70°C</td><td>細長壓電條可以灌封埋在重壓下面；要處理熱電效應（高通濾波）</td></tr>
+              <tr><th>步道人流計數</th><td>Eco-Counter SLAB：壓力板埋在步道下；兩排判斷方向</td><td>IP68；電池 10 年；一般誤差 -1%～-27%（成群通過會少算）</td><td>兩排判方向是成熟做法；要老實標示並排、成群通過時的誤差，用影片校正</td></tr>
+              <tr><th>停車格感測器</th><td>Nedap、Bosch：密封圓餅平埋在地面，被車壓過；上線後自動校正基線</td><td>鋰亞電池 5–10 年；IP67／IPx9K；本體耐溫 85°C</td><td>模組艙照抄：密封、鋰亞電池、耐溫 85°C、每天清晨自動歸零</td></tr>
+              <tr><th>人孔、水表井</th><td>金屬蓋下的無線感測器；天線穿蓋或換非金屬蓋</td><td>金屬蓋讓訊號掉 25–30 dB</td><td>鋁框就是金屬蓋：一定要開非金屬天線窗，主通道用 920 MHz</td></tr>
+              <tr><th>智慧地板研究</th><td>Georgia Tech Smart Floor：量腳踩下去的力量曲線來辨識</td><td>15 人、1,680 步、辨識率 93%</td><td>人（雙峰、停 0.2–0.7 秒）和推車輪（20–50 ms 短脈衝）可以用曲線分開</td></tr>
+              <tr><th>無人商店秤重貨架</th><td>Amazon 貨架下 4 顆荷重元，要搭配影像</td><td>荷重元有潛變、溫漂</td><td>量「變化」可以，量「長期累積的絕對重量」會被漂移吃掉 → 我們不直接秤砂</td></tr>
+              <tr><th>英國雨水溝泥沙感測</th><td>Suffolk 郡試驗多種泥沙感測器（2022）</td><td>泥沙探棒準確度約 70%；20 支只有 5 支撐完</td><td>直接量泥沙業界還做不穩 → 我們用「模型＋清坑秤重校正」為主、電極為輔</td></tr>
+              <tr><th>地墊專利前案</th><td>US5946368（1997，地墊計人判方向）、US6406549（1997，入口地墊量髒污與濕度）</td><td>都已過期</td><td>計步、判方向是公知技術；「凹槽積砂估算＋剛性鋁條地墊整合」目前沒查到前案，可能可以申請專利</td></tr>
+            </tbody>
+          </table>
+
+          <div class="two">
+            <div class="panel">
+              <h3>戶外、髒污、日曬：每一種情況的對策</h3>
+              <table class="tbl env">
+                <thead><tr><th>情況</th><th>對策</th></tr></thead>
+                <tbody>
+                  <tr><td>泥沙堆積</td><td>積砂以模型為主；電極只在乾燥時取值；清坑時順便擦拭</td></tr>
+                  <tr><td>積水、颱風淹水</td><td>IP68（1.5 m、7 天）；電池艙獨立；接頭在乾區</td></tr>
+                  <tr><td>高壓沖洗</td><td>IP69K；壓電判斷為「清洗模式」，不計數</td></tr>
+                  <tr><td>清潔劑、酸鹼</td><td>316 不鏽鋼、PU 灌膠、聚醯亞胺；陽極處理 ≥ 18 µm 並封孔</td></tr>
+                  <tr><td>日曬 70°C、UV</td><td>全部以 85°C 設計；天線窗用 ASA 或 UV 安定 PC；模組放在走道外側</td></tr>
+                  <tr><td>曬熱後突然下雨</td><td>壓電熱電效應會產生假訊號 → 1.7 Hz 高通濾波＋溫度變化率判斷</td></tr>
+                  <tr><td>海邊鹽分</td><td>316 螺絲加尼龍墊隔開鋁，避免電蝕</td></tr>
+                  <tr><td>推車、車輛重壓</td><td>感測條在鋁條下面受保護，只承受底座原本就承受的力</td></tr>
+                  <tr><td>掀地墊清坑</td><td>40 cm 維修迴圈；IP68 快拆接頭</td></tr>
+                  <tr><td>老鼠、昆蟲</td><td>全程不鏽鋼編織套管</td></tr>
+                  <tr><td>偷竊、破壞</td><td>A4 不鏽鋼防盜螺絲；模組與地坪齊平、不顯眼</td></tr>
+                  <tr><td>靜電、突波</td><td>TVS＋限流電阻；壓電膜外層接地，形成自屏蔽</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="panel">
+              <h3>老實說：哪些已經確定，哪些要實測</h3>
+              <table class="tbl env">
+                <thead><tr><th>項目</th><th>狀態</th></tr></thead>
+                <tbody>
+                  <tr><td>壓電計步、兩排判方向</td><td><span class="status">成熟</span>道路、步道、專利都有前例；要實測每一步的電壓</td></tr>
+                  <tr><td>分辨人和推車</td><td><span class="status warning">研究可行</span>要收集自己的訊號資料</td></tr>
+                  <tr><td>積水、濕滑</td><td><span class="status">簡單成熟</span>電極加上氣象署雨量</td></tr>
+                  <tr><td>積砂量</td><td><span class="status serious">最難</span>模型＋清坑秤重先上線；電容電極在第 1 階段驗證；不直接秤重</td></tr>
+                  <tr><td>天線穿出鋁框</td><td><span class="status warning">要實測</span>第 0 階段第一週量訊號強度</td></tr>
+                  <tr><td>電池 5 年</td><td><span class="status warning">理論足夠</span>平均約 6–10 µA；要用 PPK2 實測，並考慮 70°C 降額</td></tr>
+                </tbody>
+              </table>
+              <h4 class="sub-h4">耗電預算（估算）</h4>
+              <table class="tbl env">
+                <tbody>
+                  <tr><td>6 顆奈安級比較器（等待踩踏）</td><td class="num">0.45 µA</td></tr>
+                  <tr><td>MCU 深度睡眠</td><td class="num">2–5 µA</td></tr>
+                  <tr><td>每天 2,000 步 × 醒來 3 ms</td><td class="num">約 0.35 µA</td></tr>
+                  <tr><td>LoRa 每 15 分鐘上傳一次</td><td class="num">約 3 µA</td></tr>
+                  <tr><td>電極每小時量一次</td><td class="num">&lt; 0.1 µA</td></tr>
+                  <tr><th>合計 → ER18505（4 Ah）</th><th class="num">約 6–10 µA → 理論 &gt; 10 年</th></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
@@ -183,7 +281,7 @@
       <section id="sim" class="slide" data-title="即時模擬">
         <div class="wrap wide">
           <header class="sec-head">
-            <p class="kicker"><span>05</span>它怎麼工作：30 秒看完一週</p>
+            <p class="kicker"><span>06</span>它怎麼工作：30 秒看完一週</p>
             <h2>人走過、下雨、積砂、通知、派工、結案，全部自動完成</h2>
             <p class="lede">以一棟商辦的 3 個入口為例。時間已經加速（預設 1 秒 = 10 分鐘）。可以切換下雨、讓時間跑快一點，或是自己在手機上按「接單」「完成回報」。</p>
           </header>
@@ -268,7 +366,7 @@
       <section id="how" class="slide" data-title="運作原理">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>06</span>運作原理</p>
+            <p class="kicker"><span>07</span>運作原理</p>
             <h2>感測 → 模組 → 閘道 → 雲端 → 人</h2>
             <p class="lede">每個環節都選了最成熟、最便宜、最好維修的做法。不用發明新技術，只要把現成技術組裝進我們最熟的產品裡。</p>
           </header>
@@ -278,7 +376,7 @@
               <defs>
                 <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" class="arrowhead" /></marker>
               </defs>
-              <g class="node sensor"><rect x="10" y="130" width="160" height="100" rx="14" /><text x="90" y="170" class="t1">地墊感測層</text><text x="90" y="194" class="t2">壓電底座條・荷重元</text><text x="90" y="212" class="t2">濕度・ToF 積砂</text></g>
+              <g class="node sensor"><rect x="10" y="130" width="160" height="100" rx="14" /><text x="90" y="170" class="t1">地墊感測層</text><text x="90" y="194" class="t2">壓電底座條・電容電極</text><text x="90" y="212" class="t2">積水電極・NFC</text></g>
               <g class="node"><rect x="215" y="130" width="160" height="100" rx="14" /><text x="295" y="170" class="t1">Alishan Sense</text><text x="295" y="194" class="t2">邊框模組艙</text><text x="295" y="212" class="t2">睡眠・事件喚醒・批次上傳</text></g>
               <g class="node"><rect x="420" y="130" width="160" height="100" rx="14" /><text x="500" y="170" class="t1">大樓閘道器</text><text x="500" y="194" class="t2">插電・一棟一台</text><text x="500" y="212" class="t2">4G／網路線</text></g>
               <g class="node cloud"><rect x="625" y="130" width="150" height="100" rx="14" /><text x="700" y="170" class="t1">Alishan Cloud</text><text x="700" y="194" class="t2">門檻・預測</text><text x="700" y="212" class="t2">工單・報表</text></g>
@@ -297,7 +395,7 @@
             </svg>
           </figure>
           <div class="three-up">
-            <div class="panel"><h3>量「砂」，不只量「人」</h3><p>別人的智慧地墊只會數人頭。我們的地墊下面有凹槽，用荷重基線加上 ToF 高度，可以<strong>直接量到積了多少砂</strong>，這是我們的結構才有的優勢。踩踏用壓電條喚醒模組，平常幾乎不耗電。</p></div>
+            <div class="panel"><h3>量「砂」，不只量「人」</h3><p>別人的智慧地墊只會數人頭。我們用「人次 × 氣象署雨量」推估凹槽積砂，<strong>每次清坑秤重校正</strong>，再加上凹槽電極輔助，越用越準。這份數據別人沒有。踩踏用壓電條喚醒模組，平常幾乎不耗電。</p></div>
             <div class="panel"><h3>不靠大樓的 Wi-Fi</h3><p>大廳的 Wi-Fi 常常不能用，鋁框和混凝土又會擋訊號。所以用 920 MHz LoRa 這類低功耗無線（跟胎壓計同樣的設計思路），傳到一台插電的閘道器，<strong>一棟樓一台就夠</strong>。</p></div>
             <div class="panel"><h3>LINE 官方帳號</h3><p>舊提案用的 LINE Notify 已經在 <strong>2025/3/31 停止服務</strong>。改用 Messaging API，只有重要警報才主動推播；查詢類用回覆訊息，不算推播則數，成本可以控制。</p></div>
           </div>
@@ -309,14 +407,14 @@
       <section id="start" class="slide" data-title="前 90 天">
         <div class="wrap wide">
           <header class="sec-head">
-            <p class="kicker"><span>07</span>怎麼開始：前 90 天</p>
+            <p class="kicker"><span>08</span>怎麼開始：前 90 天</p>
             <h2>先花 NT$1.5 萬、用 4 週，證明它真的會動；再決定下一步</h2>
             <p class="lede">技術、業務、資金三條線一起走。每條線都有負責的人和交付的東西；第 4 週和第 13 週各有一次「要不要繼續」的決定點，由爸爸決定。</p>
           </header>
           <div class="first-week">
             <h3>第一週就可以做的 5 件事</h3>
             <ol>
-              <li><b>下單零件</b>（約 NT$1.1–1.6 萬，iCShop、台灣物聯科技都有現貨）</li>
+              <li><b>下單零件</b>（約 NT$1.2–1.8 萬，iCShop、台灣物聯科技都有現貨）</li>
               <li><b>拿一片 ES302 樣品</b>放進 2 cm 深的木框，當作凹槽</li>
               <li><b>申請 LINE 官方帳號</b>，開通 Messaging API（免費）</li>
               <li><b>把既有安裝名單整理成表格</b>：案名、年份、物業公司、聯絡人</li>
@@ -337,7 +435,7 @@
       <section id="cost" class="slide" data-title="要花多少錢">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>08</span>要花多少錢</p>
+            <p class="kicker"><span>09</span>要花多少錢</p>
             <h2>每一筆都列出來：最壞的情況，就是停在第 0 階段，損失大約 NT$1.5 萬</h2>
             <p class="lede">價格是 2026 年 9 月查到的台灣通路價和行情。標「查證」的是有找到原始頁面的；標「估計」的，下單前要再詢價。可以勾選要不要把選用項目算進去。</p>
           </header>
@@ -358,7 +456,7 @@
       <section id="partners" class="slide" data-title="找誰來做">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>09</span>找誰來做</p>
+            <p class="kicker"><span>10</span>找誰來做</p>
             <h2>自己做最核心、最便宜的部分；有風險的交給專業的人</h2>
             <p class="lede">原則：軟體用 AI 自己寫（便宜、改得快）；密封、無線、量產交給胎壓計工廠（這些最難，出錯代價也最高）；法規和保險花小錢請專家看一次。</p>
           </header>
@@ -386,7 +484,7 @@
       <section id="sales" class="slide" data-title="怎麼賣出去">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>10</span>怎麼賣出去</p>
+            <p class="kicker"><span>11</span>怎麼賣出去</p>
             <h2>不要一個一個跟管委會談：先找既有客戶，再透過物業公司放大</h2>
             <p class="lede">地墊沒有法規強制保養（電梯有），所以 Alishan Care 不能單獨賣，要<strong>綁進原本就存在的合約</strong>：物業管理合約、清潔外包合約、交屋點交文件。</p>
           </header>
@@ -425,7 +523,7 @@
       <section id="model" class="slide" data-title="商業模式">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>11</span>商業模式</p>
+            <p class="kicker"><span>12</span>商業模式</p>
             <h2>從一次性工程款，變成「一次＋每個月」</h2>
             <p class="lede">地墊還是照樣賣，只是多了一層服務。客戶每個月付的錢，換到的是「不用再操心入口」。</p>
           </header>
@@ -465,7 +563,7 @@
       <section id="roi" class="slide" data-title="財務試算">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>12</span>算給爸爸看</p>
+            <p class="kicker"><span>13</span>算給爸爸看</p>
             <h2>三年財務試算：每一個數字都可以自己調</h2>
             <p class="lede">預設值刻意抓得保守。拉動滑桿，就能看到回本時間和年經常性收入的變化。</p>
           </header>
@@ -491,7 +589,7 @@
       <section id="why" class="slide" data-title="為什麼是我們">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>13</span>為什麼是我們、為什麼是現在</p>
+            <p class="kicker"><span>14</span>為什麼是我們、為什麼是現在</p>
             <h2>這件事，換成別人來做會很難</h2>
           </header>
           <div class="why">
@@ -518,7 +616,7 @@
       <section id="risk" class="slide" data-title="風險與對策">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>14</span>可行性與風險</p>
+            <p class="kicker"><span>15</span>可行性與風險</p>
             <h2>每一個風險都有對策，也都有辦法先用小錢驗證</h2>
           </header>
           <table class="risk">
@@ -526,8 +624,8 @@
             <tbody>
               <tr><th>訊號被鋁框、混凝土擋住</th><td>模組艙用非金屬天線窗；920 MHz LoRa 穿透力好；閘道器放在大廳</td><td>第 0 階段第一週就實測訊號強度</td></tr>
               <tr><th>泥水、清潔劑、踩踏</th><td>胎壓計等級灌膠，做到 IP68；模組放在邊框端，不在踩踏面</td><td>浸水、沖洗、荷重測試各做一輪</td></tr>
-              <tr><th>電池撐不久</th><td>平常睡眠；壓電條被踩到才喚醒模組；荷重每小時才量一次；數據累積後批次上傳</td><td>實測平均電流，推算電池壽命</td></tr>
-              <tr><th>分不出是人重還是砂重</th><td>踩踏由壓電條偵測；荷重只在沒人踩的時候量基線，再用 ToF 高度交叉比對</td><td>試點時人工秤砂，跟系統數字比對</td></tr>
+              <tr><th>電池撐不久</th><td>平常睡眠；壓電條被踩到才喚醒模組；電極每小時才量一次；數據累積後批次上傳</td><td>實測平均電流，推算電池壽命</td></tr>
+              <tr><th>積砂量很難直接量</th><td>地墊是軟的、底下只剩約 2 mm，不能秤重；改用「人次 × 雨量」模型為主、清坑秤重校正、電容電極輔助</td><td>試點時每次清坑都秤砂，跟模型比對</td></tr>
               <tr><th>客戶不買單</th><td>先找既有的好客戶免費試用 3 個月，用數據說服</td><td>試點轉付費率 ≥ 30%</td></tr>
               <tr><th>地墊沒有法規強制保養</th><td>不單獨賣；綁進物業管理、清潔外包、交屋點交的合約；主打滑倒責任的舉證紀錄</td><td>跟 2 家物業公司談出分潤條件</td></tr>
               <tr><th>無線頻段與 NCC</th><td>用 920–925 MHz（LoRa AS923）或 BLE，不用 433 MHz；優先選已取得 NCC 的模組，只要登錄</td><td>下單前到 NCC 網站查模組型號</td></tr>
@@ -543,12 +641,12 @@
       <section id="roadmap" class="slide" data-title="路線圖">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>15</span>路線圖</p>
+            <p class="kicker"><span>16</span>路線圖</p>
             <h2>一步一步爬，每一站都可以停下來檢查</h2>
           </header>
           <ol class="phases">
-            <li><p class="ph">第 0 階段<small>第 1 個月・約 NT$1.1–1.6 萬</small></p><h4>桌上原型</h4><p>一片 ES302 樣品，加上 ESP32、壓電條、荷重元和濕度感測器。人踩上去，手機就收到 LINE 通知。</p><p class="gate">要繼續的條件：人次誤差 &lt; 5%，積砂能量到 50 g 的變化</p></li>
-            <li><p class="ph">第 1 階段<small>第 2–4 個月・約 NT$6–18 萬</small></p><h4>密封模組＋自家門口</h4><p>跟胎壓計工廠一起做 5 組灌膠模組艙，裝在公司門口和 2 個友好案場。同時送 SBIR Phase 1。</p><p class="gate">要繼續的條件：連續 60 天不斷線，推算電池能撐 2 年以上</p></li>
+            <li><p class="ph">第 0 階段<small>第 1 個月・約 NT$1.2–1.8 萬</small></p><h4>桌上原型</h4><p>一片 ES302 樣品，加上 ESP32、壓電膜、電容電極和積水電極。人踩上去，手機就收到 LINE 通知。</p><p class="gate">要繼續的條件：人次誤差 &lt; 5%，積砂能量到 50 g 的變化</p></li>
+            <li><p class="ph">第 1 階段<small>第 2–4 個月・約 NT$7–21 萬</small></p><h4>密封模組＋自家門口</h4><p>跟胎壓計工廠一起做 5 組灌膠模組艙，裝在公司門口和 2 個友好案場。同時送 SBIR Phase 1。</p><p class="gate">要繼續的條件：連續 60 天不斷線，推算電池能撐 2 年以上</p></li>
             <li><p class="ph">第 2 階段<small>第 5–12 個月・約 NT$27–70 萬（SBIR 可補一半）</small></p><h4>付費試點</h4><p>10–30 個入口；跟 1–2 家物業公司談白牌或分潤；建商交屋包附首年服務；Alishan Care 開賣。</p><p class="gate">要繼續的條件：試點轉付費 ≥ 30%，每個入口每月毛利 ≥ NT$1,000</p></li>
             <li><p class="ph">第 3 階段<small>第 2 年起</small></p><h4>標配化</h4><p>新案都把 Smart 當選配推出，改裝套件上市，推出 Alishan Data，再延伸到雪山、象山系列。2027 年初跟胎壓計工廠申請 CITD 研發聯盟。</p></li>
           </ol>
@@ -559,7 +657,7 @@
       <section id="ask" class="slide ask" data-title="今天的決定">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>16</span>今天想請爸爸決定的事</p>
+            <p class="kicker"><span>17</span>今天想請爸爸決定的事</p>
             <h2>不用一次押大注，只要讓我們先走第一步</h2>
           </header>
           <ol class="asks">

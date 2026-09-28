@@ -117,6 +117,10 @@ lazy($('#productViewer'), async () => {
   const { initProductViewer } = await import('./scene/productViewer.js');
   initProductViewer();
 });
+lazy($('#labViewer'), async () => {
+  const { initSensorLab } = await import('./scene/sensorLab.js');
+  initSensorLab();
+});
 lazy($('#entranceViewer'), async () => {
   const { initSimSection } = await import('./sim/section.js');
   initSimSection();

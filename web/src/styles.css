@@ -2258,3 +2258,335 @@ body.present .foot {
     display: none;
   }
 }
+
+/* ---------- 感測器實驗室 ---------- */
+.lab {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 360px;
+  gap: 16px;
+  align-items: start;
+}
+.lab-cards {
+  display: grid;
+  gap: 8px;
+}
+.lab-cards button {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 0 8px;
+  text-align: left;
+  border: 1px solid var(--line-2);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+.lab-cards button i {
+  grid-row: span 2;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: #15b8a6;
+}
+.lab-cards button b {
+  font-size: 14.5px;
+}
+.lab-cards button span {
+  font-size: 12px;
+  color: var(--ink-2);
+}
+.lab-cards button.on {
+  border: 2px solid #15b8a6;
+  background: color-mix(in srgb, #15b8a6 10%, var(--surface));
+}
+.lab-stage {
+  min-width: 0;
+}
+.lab-viewer {
+  height: min(56vh, 480px);
+  min-height: 320px;
+}
+.lab-log {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: min(360px, 60%);
+  display: grid;
+  gap: 4px;
+  z-index: 2;
+  pointer-events: none;
+}
+.ll {
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  border: 1px solid var(--line);
+  font-variant-numeric: tabular-nums;
+  animation: pop 0.25s ease-out;
+}
+.ll.muted {
+  color: var(--muted);
+}
+.ll.ok {
+  border-color: var(--good);
+  font-weight: 700;
+}
+.ll.warn {
+  border-color: var(--warning);
+  font-weight: 700;
+}
+.lab-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+.install {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.step-cap {
+  font-size: 14px;
+  color: var(--ink-2);
+  margin: 8px 0 10px;
+  min-height: 2.8em;
+}
+.wave {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px 12px 6px;
+}
+.wave figcaption {
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.wave figcaption small {
+  display: block;
+  font-weight: 400;
+}
+.wave canvas {
+  width: 100%;
+  display: block;
+}
+.lab-detail {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  font-size: 14px;
+  color: var(--ink-2);
+  max-height: 880px;
+  overflow: auto;
+}
+.lab-detail h3 {
+  color: var(--ink);
+  font-size: 19px;
+}
+.lab-detail h4 {
+  color: var(--ink);
+  font-size: 13.5px;
+  margin: 14px 0 4px;
+  padding-left: 8px;
+  border-left: 3px solid #15b8a6;
+}
+.lab-detail p,
+.lab-detail ul {
+  margin: 0 0 6px;
+}
+.lab-detail ul {
+  padding-left: 1.2em;
+}
+.lab-detail strong {
+  color: var(--ink);
+}
+.d-what {
+  color: var(--ink);
+}
+.d-diagram {
+  background: var(--surface-2);
+  border-radius: 12px;
+  padding: 8px;
+  margin: 10px 0;
+}
+.d-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 10px;
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.d-meta dt {
+  font-weight: 700;
+  color: var(--ink);
+}
+.d-meta dd {
+  margin: 0;
+}
+.dg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.dg text {
+  font-family: var(--font);
+  text-anchor: middle;
+}
+.dg-t {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+.dg-t.sm {
+  font-size: 11px;
+}
+.dg-t.light {
+  fill: #fff;
+}
+.dg-s {
+  font-size: 10.5px;
+  fill: var(--ink-2);
+}
+.dg-op {
+  font-size: 16px;
+  font-weight: 700;
+  fill: var(--muted);
+}
+.dg-alu {
+  fill: #c3c8cf;
+}
+.dg-carrier {
+  fill: #2e7d74;
+}
+.dg-film {
+  fill: #e0a53c;
+}
+.dg-arrow,
+.dg-wire {
+  stroke: var(--accent-2);
+  stroke-width: 2;
+  fill: none;
+}
+.dg-comp {
+  fill: var(--surface);
+  stroke: var(--ink-2);
+  stroke-width: 1.5;
+}
+.dg-mcu {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.dg-box {
+  fill: var(--surface);
+  stroke: var(--line-2);
+  stroke-width: 1.5;
+}
+.dg-fpc {
+  fill: #b87a22;
+}
+.dg-cu {
+  fill: #e9b86a;
+}
+.dg-field {
+  fill: none;
+  stroke: #15b8a6;
+  stroke-width: 1.3;
+  stroke-dasharray: 3 3;
+}
+.dg-sand {
+  fill: #a8875c;
+}
+.dg-water {
+  fill: #5aa9e6;
+  opacity: 0.45;
+}
+.dg-pin {
+  fill: #b7c0c9;
+  stroke: var(--ink-2);
+  stroke-width: 0.8;
+}
+.dg-nfc {
+  fill: #1f5fbf;
+}
+.dg-phone {
+  fill: var(--ink);
+}
+.dg-screen {
+  fill: #7cc4ff;
+}
+.dg-window {
+  fill: #1a1d21;
+}
+.dg-pot {
+  fill: #d59a3a;
+  opacity: 0.55;
+}
+.dg-pcb {
+  fill: #1f7a3f;
+}
+.dg-bat-bay {
+  fill: var(--surface);
+  stroke: var(--line-2);
+}
+.dg-bat {
+  fill: #4d6fb3;
+}
+.sub-h {
+  margin: 36px 0 12px;
+  font-size: 22px;
+}
+.sub-h4 {
+  margin: 16px 0 6px;
+  font-size: 14px;
+}
+.partners.analog tbody th {
+  width: 13%;
+}
+.env td:first-child {
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--ink);
+}
+.env .status {
+  margin-right: 6px;
+}
+@media (max-width: 1280px) {
+  .lab {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+  .lab-detail {
+    grid-column: 1 / -1;
+    max-height: none;
+  }
+}
+@media (max-width: 820px) {
+  .lab {
+    grid-template-columns: 1fr;
+  }
+  .lab-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .lab-log {
+    width: auto;
+    left: 10px;
+  }
+  .env td:first-child {
+    white-space: normal;
+  }
+}
