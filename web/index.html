@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="易潔寶® 178mat 轉型提案：IoT 智慧除泥地墊、Alishan Care 訂閱服務與互動 3D 展示。" />
+    <title>Project Alishan 阿里山計畫</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f6e56'/%3E%3Cpath d='M6 50 L24 22 L32 34 L42 16 L58 50Z' fill='%23fff'/%3E%3Ccircle cx='47' cy='15' r='6' fill='%23e0702f'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <header class="topbar" id="topbar">
+      <a class="brand" href="#cover" aria-label="回到封面">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M4 52 L24 20 L32 32 L42 14 L60 52Z" fill="currentColor"/><circle cx="48" cy="14" r="6" class="sun"/></svg>
+        <span>Project Alishan</span>
+      </a>
+      <nav class="toc" id="toc" aria-label="章節"></nav>
+      <div class="top-actions">
+        <button class="btn ghost small" id="presentBtn" title="簡報模式（← → 翻頁，F 全螢幕）">▶ 簡報模式</button>
+        <button class="btn ghost small icon" id="themeBtn" title="切換深淺色" aria-label="切換深淺色">◐</button>
+      </div>
+    </header>
+    <div class="progress" id="progress"></div>
+
+    <main>
+      <!-- 01 封面 -->
+      <section id="cover" class="slide cover" data-title="封面">
+        <svg class="ridges" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <defs>
+            <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stop-color="var(--accent-2)" stop-opacity="0.9" />
+              <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <circle cx="1030" cy="250" r="220" fill="url(#sunGlow)" class="sun-glow" />
+          <circle cx="1030" cy="250" r="54" class="sun-disc" />
+          <path class="r r1" d="M0 330 C120 300 190 250 290 262 C380 272 430 210 540 196 C650 182 700 240 800 226 C900 212 960 150 1080 170 C1190 188 1260 250 1440 232 L1440 560 L0 560Z" />
+          <path class="r r2" d="M0 390 C140 360 230 320 340 334 C450 348 520 290 640 286 C760 282 820 340 930 330 C1050 318 1120 276 1240 290 C1330 300 1390 330 1440 320 L1440 560 L0 560Z" />
+          <path class="r r3" d="M0 450 C160 420 260 396 380 410 C500 424 580 380 700 384 C820 388 900 430 1020 420 C1150 408 1250 380 1440 400 L1440 560 L0 560Z" />
+          <path class="r r4" d="M0 510 C200 486 320 470 480 482 C640 494 760 468 900 474 C1060 480 1200 500 1440 488 L1440 560 L0 560Z" />
+        </svg>
+        <div class="wrap cover-inner">
+          <p class="kicker">易潔寶® 178mat・內部轉型提案・2026</p>
+          <h1>Project Alishan<br /><span>阿里山計畫</span></h1>
+          <p class="lede">從「賣一塊地墊」，走向「賣一個<strong>永遠乾淨、安全、有數據可以證明</strong>的入口」。<br />第一步：把 IoT 做進我們最熟悉的鋁合金除泥地墊。</p>
+          <div class="cta">
+            <a class="btn primary" href="#product">看 3D 智慧地墊</a>
+            <a class="btn" href="#sim">看它怎麼工作</a>
+            <a class="btn ghost" href="#roi">看數字</a>
+          </div>
+          <dl class="cover-stats">
+            <div><dt>施工經驗</dt><dd>24 年<small>SINCE 2002</small></dd></div>
+            <div><dt>公開案例紀錄</dt><dd>400+<small>篇施工文章</small></dd></div>
+            <div><dt>台灣同業做 IoT</dt><dd>0 家<small>目前查不到</small></dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- 02 我們是誰 -->
+      <section id="about" class="slide" data-title="我們是誰">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>02</span>我們是誰</p>
+            <h2>我們已經站在山腳下：產品、案場、口碑都有了</h2>
+            <p class="lede">易潔寶是台灣最早自製鋁合金除泥地墊的廠商之一。產品用台灣的山命名；這次的轉型，我們叫它「阿里山」。</p>
+          </header>
+
+          <ol class="timeline">
+            <li><b>2002</b><span>引進鋁合金除泥地墊，同年第一塊自製產品出廠</span></li>
+            <li><b>2004</b><span>設廠量產，跟設計師、建築師一起推廣</span></li>
+            <li><b>2005</b><span>註冊「易潔寶®」商標</span></li>
+            <li><b>2019</b><span>玉山 ES302 通過 SGS 試驗，抗壓 15,000 kgf</span></li>
+            <li class="now"><b>2026</b><span>Project Alishan：智慧化、服務化</span></li>
+          </ol>
+
+          <div class="mountains">
+            <article class="mcard">
+              <p class="mname">玉山系列<b>ES302</b></p>
+              <p>主力產品。6063-T5 鋁擠型、墊高 23 mm、凹槽 20 mm；重量級，適合每日 2,000 人次以上。</p>
+            </article>
+            <article class="mcard">
+              <p class="mname">雪山系列<b>SM305</b></p>
+              <p>豪宅、廠辦案例。</p>
+            </article>
+            <article class="mcard">
+              <p class="mname">象山系列<b>SS103</b></p>
+              <p>1 cm 平鋪式，不用開挖，舊建築也能裝。</p>
+            </article>
+            <article class="mcard next">
+              <p class="mname">下一座山<b>阿里山</b></p>
+              <p>不是新的鋁條，而是讓每一座山都「會說話」：感測、雲端、服務。</p>
+            </article>
+          </div>
+
+          <div class="two">
+            <div class="panel">
+              <h3>做過的地方（節錄自官網案例）</h3>
+              <ul class="chips">
+                <li>桃園機場 第一、二航廈</li><li>林口長庚 質子治療中心</li><li>中國醫大附醫</li><li>奇美博物館</li><li>海洋科技博物館</li><li>台中科博館</li><li>台南、路竹、中科的科技廠辦</li><li>阿里山飯店</li><li>中和環球購物中心</li><li>遠雄・冠德・國建・鄉林・總太・麗寶 等建商</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h3>老實說，我們的弱點</h3>
+              <ul class="bullets">
+                <li>營收幾乎都是<strong>一次性工程款</strong>，做完就結束，每年都要從零開始接案。</li>
+                <li>客戶用了 10 年、15 年才想到換毯條，<strong>中間我們跟客戶完全沒有聯繫</strong>。</li>
+                <li>數位能見度低：官網是 Blogger，沒有經營電商和社群，價格也不公開。</li>
+                <li>鋁條地墊很容易被拿來比價，只能用規格和施工品質來區隔。</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="insight">
+            <b>關鍵發現</b>我們其實已經有訂閱業務的種子：「舊毯換新」（大甲糕餅店 15 年更新、中和環球購物中心更換毯面）。只是現在都是<em>客戶想到才打電話來</em>。阿里山計畫要做的，是讓數據告訴我們「什麼時候該去」。
+          </aside>
+        </div>
+      </section>
+
+      <!-- 03 市場 -->
+      <section id="market" class="slide" data-title="市場在變">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>03</span>市場在變</p>
+            <h2>客戶要買的，不再只是一塊地墊，而是一個「交代得過去」的入口</h2>
+            <p class="lede">物管公司要報表，ESG 要紀錄，業主怕有人滑倒要理賠，清潔人力又越來越難找。這些痛點，全都集中在大樓的第一道門。</p>
+          </header>
+          <div class="stats4">
+            <div class="stat"><p class="v">85%</p><p class="l">室內的髒污，是從鞋底帶進來的</p><p class="s">ISSA 等產業研究常引用的數字</p></div>
+            <div class="stat"><p class="v">NT$200–250</p><p class="l">清潔人員時薪；都會區全職月薪約 2.8–4 萬</p><p class="s">104／1111 職缺行情，而且越來越難找人</p></div>
+            <div class="stat"><p class="v">≥ 3 m</p><p class="l">WELL、LEED 對入口防塵系統的最短長度</p><p class="s">WELL 另外要求要有維護計畫</p></div>
+            <div class="stat"><p class="v">2024</p><p class="l">智慧建築標章新版評估手冊</p><p class="s">維運管理、智慧創新等指標都能加分</p></div>
+          </div>
+          <div class="shift">
+            <div><h4>以前的買家問</h4><p>「一米多少錢？」「多厚？」「要多久可以做好？」</p></div>
+            <div class="arrow" aria-hidden="true">→</div>
+            <div><h4>現在的買家問</h4><p>「能不能證明有每週維護？」「下雨天會不會有人滑倒？」「能不能少派一個人巡邏？」「有沒有報表可以給董事會看？」</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 3D 產品 -->
+      <section id="product" class="slide" data-title="3D 產品">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>04</span>產品：易潔寶 Smart</p>
+            <h2>同一塊玉山 ES302，把感測器藏進我們本來就有的結構裡</h2>
+            <p class="lede">依照 ES302 規格表和 4-BLOCK 施工大樣圖，用真實尺寸建模。可以拖曳旋轉、滾輪縮放；按「爆炸圖」看感測器藏在哪裡，按「剖面」對照施工圖。</p>
+          </header>
+          <div class="viewer-shell">
+            <div class="viewer" id="productViewer" aria-label="3D 地墊模型，可拖曳旋轉">
+              <div class="viewer-hint">拖曳旋轉・滾輪／兩指縮放</div>
+            </div>
+            <aside class="viewer-panel" id="productPanel">
+              <div class="seg" role="group" aria-label="檢視模式">
+                <button class="on" data-mode="assembled">組合</button>
+                <button data-mode="explode">爆炸圖</button>
+                <button data-mode="section">剖面</button>
+              </div>
+              <h4>面材配置</h4>
+              <div class="layouts" id="layoutBtns"></div>
+              <div id="finishSwatches" class="swatch-groups"></div>
+              <h4>感測版本</h4>
+              <div class="seg small" role="group" aria-label="感測版本">
+                <button class="on" data-sensor="new">新案內建</button>
+                <button data-sensor="retrofit">舊案改裝</button>
+              </div>
+              <p class="note" id="sensorNote"></p>
+              <h4>入口尺寸</h4>
+              <label class="range">寬（鋁條長度）<output id="wOut">0.6 m</output><input type="range" id="wIn" min="0.6" max="3" step="0.1" value="0.6" /></label>
+              <label class="range">深（行進方向）<output id="dOut">0.5 m</output><input type="range" id="dIn" min="0.4" max="2" step="0.1" value="0.5" /></label>
+              <dl class="specs" id="matSpecs"></dl>
+            </aside>
+          </div>
+          <div class="three-up">
+            <div class="panel"><h3>新案：出貨就內建</h3><p>凹槽多挖 5 mm，四個角放扁平荷重元，<strong>每小時量一次總重</strong>，慢慢增加的重量就是凹槽積了多少砂。踩踏交給壓電感測底座條，<strong>被踩到時自己就會產生訊號</strong>，可以直接喚醒模組、計算人次。</p></div>
+            <div class="panel"><h3>舊案：換一條底座就升級</h3><p>PVC 避震底座本來就是可以換的零件。把其中 2 條換成壓電感測底座條，邊框角落再加 ToF 量積砂高度。<strong>400+ 個既有案場都能改裝</strong>，不用重新施工。</p></div>
+            <div class="panel"><h3>模組艙：藏在邊框端</h3><p>電池、MCU、無線模組灌膠密封，放在實心鋁邊框的端部，不在踩踏面上。上蓋是非金屬天線窗，跟地坪齊平。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 即時模擬 -->
+      <section id="sim" class="slide" data-title="即時模擬">
+        <div class="wrap wide">
+          <header class="sec-head">
+            <p class="kicker"><span>05</span>它怎麼工作：30 秒看完一週</p>
+            <h2>人走過、下雨、積砂、通知、派工、結案，全部自動完成</h2>
+            <p class="lede">以一棟商辦的 3 個入口為例。時間已經加速（預設 1 秒 = 10 分鐘）。可以切換下雨、讓時間跑快一點，或是自己在手機上按「接單」「完成回報」。</p>
+          </header>
+          <div class="sim-grid">
+            <div class="sim-stage">
+              <div class="viewer tall" id="entranceViewer" aria-label="3D 大樓入口模擬">
+                <div class="hud">
+                  <div class="clock"><span id="simClock">週一 07:30</span><em id="simMode">營業中</em></div>
+                  <div class="live"><i></i>即時・東側大門</div>
+                </div>
+              </div>
+              <div class="sim-controls" id="simControls">
+                <div class="seg" role="group" aria-label="天氣">
+                  <button class="on" data-weather="sun">☀ 晴天</button>
+                  <button data-weather="rain">☂ 下雨</button>
+                </div>
+                <div class="seg" role="group" aria-label="速度">
+                  <button data-speed="60">1 秒＝1 分</button>
+                  <button class="on" data-speed="600">1 秒＝10 分</button>
+                  <button data-speed="3600">1 秒＝1 小時</button>
+                </div>
+                <button class="btn small" data-act="pause">⏸ 暫停</button>
+                <button class="btn small" data-act="xray">X 光看凹槽</button>
+                <button class="btn small" data-act="night">☾ 跳到今晚 23:05</button>
+                <button class="btn small danger" data-act="intrude">模擬夜間入侵</button>
+                <label class="toggle"><input type="checkbox" id="autoCrew" checked /> 清潔人員自動接單</label>
+              </div>
+            </div>
+            <div class="phone" id="phone" aria-label="LINE 官方帳號通知示意">
+              <div class="phone-notch"></div>
+              <div class="phone-head">
+                <span class="oa-avatar" aria-hidden="true">易</span>
+                <div><b>易潔寶 Alishan Care</b><small>LINE 官方帳號・示意畫面</small></div>
+              </div>
+              <div class="chat" id="chat" aria-live="polite"></div>
+              <div class="richmenu" id="richmenu">
+                <button data-q="status">今日狀態</button>
+                <button data-q="call">叫人清潔</button>
+                <button data-q="report">本週報表</button>
+              </div>
+              <p class="quota" id="quota">本月主動推播 0 則｜免費額度 200 則</p>
+            </div>
+          </div>
+
+          <div class="dash" id="dash">
+            <div class="dash-head">
+              <h3>Alishan 管理儀表板<small>A 棟商辦・物業管理中心</small></h3>
+              <div class="site-tabs" id="siteTabs" role="tablist"></div>
+            </div>
+            <div class="kpis" id="kpis"></div>
+            <div class="charts">
+              <figure class="chart">
+                <figcaption>今日每小時人流<small>人次</small></figcaption>
+                <canvas id="hourlyChart" height="200"></canvas>
+              </figure>
+              <figure class="chart">
+                <figcaption>凹槽積砂量（最近 7 天）<small>％，虛線是 70% 清潔門檻</small></figcaption>
+                <canvas id="debrisChart" height="200"></canvas>
+              </figure>
+            </div>
+            <div class="dash-bottom">
+              <div class="panel">
+                <h4>所有入口</h4>
+                <table class="tbl" id="sitesTable"><thead><tr><th>入口</th><th>今日人次</th><th>積砂</th><th>毯條壽命</th><th>狀態</th></tr></thead><tbody></tbody></table>
+              </div>
+              <div class="panel">
+                <h4>工單</h4>
+                <ul class="orders" id="orders"><li class="empty">目前沒有工單</li></ul>
+              </div>
+              <div class="panel">
+                <h4>維護紀錄<small>可以匯出成 WELL／ESG 報表</small></h4>
+                <p class="compliance" id="compliance"></p>
+                <ul class="log" id="log"><li class="empty">尚無紀錄</li></ul>
+              </div>
+            </div>
+          </div>
+          <p class="footnote">＊模擬參數（人流曲線、每人帶入砂量、濕度衰減、毯條壽命）都是示意用的假設，實際數字要在第 1 階段試點時量出來。</p>
+        </div>
+      </section>
+
+      <!-- 06 運作原理 -->
+      <section id="how" class="slide" data-title="運作原理">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>06</span>運作原理</p>
+            <h2>感測 → 模組 → 閘道 → 雲端 → 人</h2>
+            <p class="lede">每個環節都選了最成熟、最便宜、最好維修的做法。不用發明新技術，只要把現成技術組裝進我們最熟的產品裡。</p>
+          </header>
+          <figure class="flow" aria-label="系統架構圖">
+            <svg viewBox="0 0 1000 360" role="img" aria-labelledby="flowTitle">
+              <title id="flowTitle">智慧地墊系統架構：感測層、模組艙、閘道器、雲端，輸出到 LINE、儀表板與報表</title>
+              <defs>
+                <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" class="arrowhead" /></marker>
+              </defs>
+              <g class="node sensor"><rect x="10" y="130" width="160" height="100" rx="14" /><text x="90" y="170" class="t1">地墊感測層</text><text x="90" y="194" class="t2">壓電底座條・荷重元</text><text x="90" y="212" class="t2">濕度・ToF 積砂</text></g>
+              <g class="node"><rect x="215" y="130" width="160" height="100" rx="14" /><text x="295" y="170" class="t1">Alishan Sense</text><text x="295" y="194" class="t2">邊框模組艙</text><text x="295" y="212" class="t2">睡眠・事件喚醒・批次上傳</text></g>
+              <g class="node"><rect x="420" y="130" width="160" height="100" rx="14" /><text x="500" y="170" class="t1">大樓閘道器</text><text x="500" y="194" class="t2">插電・一棟一台</text><text x="500" y="212" class="t2">4G／網路線</text></g>
+              <g class="node cloud"><rect x="625" y="130" width="150" height="100" rx="14" /><text x="700" y="170" class="t1">Alishan Cloud</text><text x="700" y="194" class="t2">門檻・預測</text><text x="700" y="212" class="t2">工單・報表</text></g>
+              <g class="node out"><rect x="820" y="30" width="170" height="70" rx="12" /><text x="905" y="60" class="t1">LINE 官方帳號</text><text x="905" y="82" class="t2">警報・派工・每日摘要</text></g>
+              <g class="node out"><rect x="820" y="145" width="170" height="70" rx="12" /><text x="905" y="175" class="t1">管理儀表板</text><text x="905" y="197" class="t2">物管・業主・我們</text></g>
+              <g class="node out"><rect x="820" y="260" width="170" height="70" rx="12" /><text x="905" y="290" class="t1">ESG／WELL 報表</text><text x="905" y="312" class="t2">每月自動產生</text></g>
+              <path class="wire" d="M170 180 H215" marker-end="url(#arw)" />
+              <path class="wire rf" d="M375 180 H420" marker-end="url(#arw)" />
+              <path class="wire" d="M580 180 H625" marker-end="url(#arw)" />
+              <path class="wire" d="M775 165 C800 140 800 70 820 65" marker-end="url(#arw)" />
+              <path class="wire" d="M775 180 H820" marker-end="url(#arw)" />
+              <path class="wire" d="M775 195 C800 220 800 290 820 295" marker-end="url(#arw)" />
+              <path class="wire back" d="M905 330 C905 356 500 356 90 356 C60 356 60 300 60 232" marker-end="url(#arw)" />
+              <text x="397" y="118" class="t3">Sub-GHz／BLE</text><path class="wire rf-tick" d="M397 124 V172" />
+              <text x="500" y="348" class="t3">清潔人員／Alishan Care 到場處理 → 數據歸零 → 寫入維護紀錄</text>
+            </svg>
+          </figure>
+          <div class="three-up">
+            <div class="panel"><h3>量「砂」，不只量「人」</h3><p>別人的智慧地墊只會數人頭。我們的地墊下面有凹槽，用荷重基線加上 ToF 高度，可以<strong>直接量到積了多少砂</strong>，這是我們的結構才有的優勢。踩踏用壓電條喚醒模組，平常幾乎不耗電。</p></div>
+            <div class="panel"><h3>不靠大樓的 Wi-Fi</h3><p>大廳的 Wi-Fi 常常不能用，鋁框和混凝土又會擋訊號。所以用胎壓計同款的低功耗無線，傳到一台插電的閘道器，<strong>一棟樓一台就夠</strong>。</p></div>
+            <div class="panel"><h3>LINE 官方帳號</h3><p>舊提案用的 LINE Notify 已經在 <strong>2025/3/31 停止服務</strong>。改用 Messaging API，只有重要警報才主動推播；查詢類用回覆訊息，不算推播則數，成本可以控制。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 商業模式 -->
+      <section id="model" class="slide" data-title="商業模式">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>07</span>商業模式</p>
+            <h2>從一次性工程款，變成「一次＋每個月」</h2>
+            <p class="lede">地墊還是照樣賣，只是多了一層服務。客戶每個月付的錢，換到的是「不用再操心入口」。</p>
+          </header>
+          <div class="tiers">
+            <article class="tier">
+              <p class="tname">易潔寶 Smart<small>產品</small></p>
+              <p class="tprice">每個入口加價 <b>NT$18,000</b> 起</p>
+              <ul><li>新案出貨時就內建 Alishan Sense</li><li>舊案用改裝套件升級</li><li>含閘道器與第一年雲端</li></ul>
+            </article>
+            <article class="tier hero">
+              <p class="tname">Alishan Care<small>訂閱・主力</small></p>
+              <p class="tprice"><b>NT$2,500</b>／入口／月 起</p>
+              <ul><li>24 小時監測，LINE 警報與派工</li><li>凹槽定期清潔（依積砂量安排，不是固定排程）</li><li>毯條依磨耗自動排程更換</li><li>每月 ESG／WELL 維護報表</li></ul>
+            </article>
+            <article class="tier">
+              <p class="tname">Alishan Data<small>數據</small></p>
+              <p class="tprice">依案場報價</p>
+              <ul><li>人流報表／API：商場、物管、場館</li><li>可以用在排班、招商、空調節能</li><li>匿名、不拍照，沒有個資問題</li></ul>
+            </article>
+          </div>
+          <table class="compare">
+            <thead><tr><th></th><th>現在（傳統）</th><th>阿里山之後</th></tr></thead>
+            <tbody>
+              <tr><th>營收</th><td>一次性工程款</td><td>工程款＋<strong>每月經常性收入</strong></td></tr>
+              <tr><th>跟客戶的關係</th><td>完工就結束</td><td>每個月都有接觸，最先知道客戶的新需求</td></tr>
+              <tr><th>換毯條</th><td>客戶想到才打來（10–15 年）</td><td>系統依磨耗預測，自動排程</td></tr>
+              <tr><th>競爭方式</th><td>很容易被比價</td><td>比的是服務和數據，同業很難跟進</td></tr>
+              <tr><th>公司價值</th><td>看今年接了多少案</td><td>看<strong>年經常性收入（ARR）</strong>，估值倍數更高</td></tr>
+            </tbody>
+          </table>
+          <aside class="insight"><b>第一批客戶不用去外面找</b>官網上 400+ 個既有案場（機場、醫院、科技廠、建商公設），就是改裝套件＋Alishan Care 最好的名單。他們已經信任我們的地墊。</aside>
+        </div>
+      </section>
+
+      <!-- 08 財務試算 -->
+      <section id="roi" class="slide" data-title="財務試算">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>08</span>算給爸爸看</p>
+            <h2>三年財務試算：每一個數字都可以自己調</h2>
+            <p class="lede">預設值刻意抓得保守。拉動滑桿，就能看到回本時間和年經常性收入的變化。</p>
+          </header>
+          <div class="roi">
+            <form class="roi-inputs" id="roiInputs" onsubmit="return false"></form>
+            <div class="roi-out">
+              <div class="kpis small" id="roiKpis"></div>
+              <figure class="chart">
+                <figcaption>累計現金流（NT$）<small>低於 0 表示還在投資期；越過 0 的那個月就是回本</small></figcaption>
+                <canvas id="cashChart" height="240"></canvas>
+              </figure>
+              <div class="unit" id="unitBox"></div>
+            </div>
+          </div>
+          <div class="panel customer">
+            <h3>客戶那邊，省了多少？<small>只算看得到的巡檢人力，還沒算滑倒理賠和認證的價值</small></h3>
+            <div class="cust" id="custBox"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 為什麼是我們 -->
+      <section id="why" class="slide" data-title="為什麼是我們">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>09</span>為什麼是我們、為什麼是現在</p>
+            <h2>這件事，換成別人來做會很難</h2>
+          </header>
+          <div class="why">
+            <div class="panel"><h3>① 產品和案場都在手上</h3><p>24 年施工經驗，400+ 篇案例。別人要做智慧地墊，得先學會做鋁合金地墊；我們只要加感測。</p></div>
+            <div class="panel"><h3>② 親戚的胎壓計工廠</h3><p>胎壓計和智慧地墊要解決的，其實是同一件事：</p>
+              <table class="tbl map">
+                <thead><tr><th>胎壓計已經會的</th><th>智慧地墊需要的</th></tr></thead>
+                <tbody>
+                  <tr><td>壓力感測、校正</td><td>踩踏與荷重感測</td></tr>
+                  <tr><td>鈕扣電池撐 5–10 年</td><td>模組 3–5 年免換電池</td></tr>
+                  <tr><td>高溫、震動、灌膠密封</td><td>泥水、清潔劑、踩踏</td></tr>
+                  <tr><td>低功耗無線，要穿過金屬輪框</td><td>要穿過鋁框和混凝土</td></tr>
+                  <tr><td>車規量產、品管</td><td>量產的一致性</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="panel"><h3>③ AI 讓小團隊也做得出軟體</h3><p>以前要 5 個人的軟體團隊，現在一個懂一點程式的人，加上 AI 就能做出原型。<strong>你現在看到的這份互動提案，就是這樣做出來的。</strong></p></div>
+            <div class="panel"><h3>④ 國外已經驗證，台灣還是空白</h3><p>德國 SensFloor、美國 Scanalytics、西班牙 Sensing Tex，都已經證明感測地板可行。但<strong>沒有人做在重型鋁合金刮泥地墊裡</strong>，也沒有人量積砂和毯條磨耗。台灣同業（甜心、麗合、東強、喬城…）目前都沒有 IoT。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 風險 -->
+      <section id="risk" class="slide" data-title="風險與對策">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>10</span>可行性與風險</p>
+            <h2>每一個風險都有對策，也都有辦法先用小錢驗證</h2>
+          </header>
+          <table class="risk">
+            <thead><tr><th>風險</th><th>對策</th><th>怎麼驗證</th></tr></thead>
+            <tbody>
+              <tr><th>訊號被鋁框、混凝土擋住</th><td>模組艙用非金屬天線窗；Sub-GHz 穿透力好；閘道器放在大廳</td><td>第 0 階段第一週就實測訊號強度</td></tr>
+              <tr><th>泥水、清潔劑、踩踏</th><td>胎壓計等級灌膠，做到 IP68；模組放在邊框端，不在踩踏面</td><td>浸水、沖洗、荷重測試各做一輪</td></tr>
+              <tr><th>電池撐不久</th><td>平常睡眠；壓電條被踩到才喚醒模組；荷重每小時才量一次；數據累積後批次上傳</td><td>實測平均電流，推算電池壽命</td></tr>
+              <tr><th>分不出是人重還是砂重</th><td>踩踏由壓電條偵測；荷重只在沒人踩的時候量基線，再用 ToF 高度交叉比對</td><td>試點時人工秤砂，跟系統數字比對</td></tr>
+              <tr><th>客戶不買單</th><td>先找既有的好客戶免費試用 3 個月，用數據說服</td><td>試點轉付費率 ≥ 30%</td></tr>
+              <tr><th>影響本業</th><td>分階段、小額投入；每個階段都用數字決定要不要繼續</td><td>每月一次進度報告</td></tr>
+              <tr><th>LINE 訊息費用</th><td>只推播重要警報；查詢用免費的回覆訊息；另外有每日摘要</td><td>每個入口每月推播少於 10 則</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 11 路線圖 -->
+      <section id="roadmap" class="slide" data-title="路線圖">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>11</span>路線圖</p>
+            <h2>一步一步爬，每一站都可以停下來檢查</h2>
+          </header>
+          <ol class="phases">
+            <li><p class="ph">第 0 階段<small>第 1 個月・&lt; NT$1 萬</small></p><h4>桌上原型</h4><p>一片 ES302 樣品，加上 ESP32、壓電條、荷重元和濕度感測器。人踩上去，手機就收到 LINE 通知。</p><p class="gate">要繼續的條件：人次誤差 &lt; 5%，積砂能量到 50 g 的變化</p></li>
+            <li><p class="ph">第 1 階段<small>第 2–4 個月・NT$10–30 萬</small></p><h4>密封模組＋自家門口</h4><p>跟親戚工廠一起做 5 組模組艙，裝在公司門口和 2 個友好案場。</p><p class="gate">要繼續的條件：連續 60 天不斷線，推算電池能撐 2 年以上</p></li>
+            <li><p class="ph">第 2 階段<small>第 5–12 個月・NT$50–100 萬</small></p><h4>付費試點</h4><p>10–30 個入口，跟綠建築顧問合作，Alishan Care 正式開賣。</p><p class="gate">要繼續的條件：試點轉付費 ≥ 30%，每個入口每月毛利 ≥ NT$1,000</p></li>
+            <li><p class="ph">第 3 階段<small>第 2 年起</small></p><h4>標配化</h4><p>新案都把 Smart 當選配推出，改裝套件上市，推出 Alishan Data，再延伸到雪山、象山系列。</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 12 決定 -->
+      <section id="ask" class="slide ask" data-title="今天的決定">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>12</span>今天想請爸爸決定的事</p>
+            <h2>不用一次押大注，只要讓我們先走第一步</h2>
+          </header>
+          <ol class="asks">
+            <li><b>同意啟動第 0 階段</b><span>一個月內、預算一萬元以內，做出會發 LINE 的原型</span></li>
+            <li><b>給我一片 ES302 樣品和公司門口</b><span>當作第一個試點</span></li>
+            <li><b>幫忙牽線親戚的胎壓計工廠</b><span>先談模組艙的密封和量產可行性</span></li>
+            <li><b>一起挑 2 個關係好的既有案場</b><span>讓我去談 3 個月的免費試點</span></li>
+          </ol>
+          <p class="promise">我負責的：每個月一次進度報告，用數字說話；每個階段結束都由爸爸決定要不要繼續。</p>
+          <p class="signoff">阿里山的日出，要先爬上去才看得到。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <h4>資料來源</h4>
+        <ul class="sources">
+          <li><a href="https://www.178mat.com/" target="_blank" rel="noopener">易潔寶官網（施工百科全書、公司介紹、ES302 規格表、SGS 報告）</a></li>
+          <li>易潔寶 ES302 規格表（20260501 版）、178mat-4-BLOCK 施工大樣圖、嵌入式鋁合金除泥地墊施工流程（公司內部資料）</li>
+          <li><a href="https://standard.wellcertified.com/v8/entryway-walk-systems-b" target="_blank" rel="noopener">WELL Standard：Entryway Walk-Off Systems</a>、<a href="https://standard.wellcertified.com/air/healthy-entrance" target="_blank" rel="noopener">Healthy Entrance</a></li>
+          <li><a href="https://www.bnext.com.tw/article/80785/line-notify-2025-end-of-service" target="_blank" rel="noopener">數位時代：LINE Notify 2025/3/31 終止服務</a></li>
+          <li><a href="https://www.abri.gov.tw/PeriodicalDetail.aspx?n=861&amp;s=2897" target="_blank" rel="noopener">內政部建築研究所：智慧建築評估手冊 2024 年版</a></li>
+          <li><a href="https://future-shape.com/en/faq-items/what-does-sensfloor-cost/" target="_blank" rel="noopener">SensFloor</a>、<a href="https://www.scanalyticsinc.com/" target="_blank" rel="noopener">Scanalytics</a>、<a href="https://sensingtex.com/real-time-crowd-control-using-smart-sensor-floor-mats/" target="_blank" rel="noopener">Sensing Tex</a></li>
+          <li><a href="https://guide.104.com.tw/salary/job/2018002012" target="_blank" rel="noopener">104 職涯導航：清潔人員薪資</a></li>
+        </ul>
+        <p class="fine">Project Alishan・易潔寶® 178mat 內部提案。財務與模擬數字都是示意假設，不代表實際營運數據。</p>
+      </div>
+    </footer>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

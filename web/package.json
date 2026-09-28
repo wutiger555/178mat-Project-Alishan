@@ -1,0 +1,20 @@
+{
+  "name": "alishan-demo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Project Alishan 阿里山計畫｜易潔寶 IoT 智慧地墊互動提案",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test \"src/**/*.test.js\""
+  },
+  "dependencies": {
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "vite": "^8.3.1",
+    "vite-plugin-singlefile": "^2.3.3"
+  }
+}
