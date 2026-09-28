@@ -52,6 +52,7 @@
             <div><dt>施工經驗</dt><dd>24 年<small>SINCE 2002</small></dd></div>
             <div><dt>公開案例紀錄</dt><dd>400+<small>篇施工文章</small></dd></div>
             <div><dt>台灣同業做 IoT</dt><dd>0 家<small>目前查不到</small></dd></div>
+            <div class="first"><dt>第一步</dt><dd>4 週<small>約 NT$1.5 萬就能驗證</small></dd></div>
           </dl>
         </div>
       </section>
@@ -291,23 +292,140 @@
               <path class="wire" d="M775 180 H820" marker-end="url(#arw)" />
               <path class="wire" d="M775 195 C800 220 800 290 820 295" marker-end="url(#arw)" />
               <path class="wire back" d="M905 330 C905 356 500 356 90 356 C60 356 60 300 60 232" marker-end="url(#arw)" />
-              <text x="397" y="118" class="t3">Sub-GHz／BLE</text><path class="wire rf-tick" d="M397 124 V172" />
+              <text x="397" y="118" class="t3">920 MHz LoRa／BLE</text><path class="wire rf-tick" d="M397 124 V172" />
               <text x="500" y="348" class="t3">清潔人員／Alishan Care 到場處理 → 數據歸零 → 寫入維護紀錄</text>
             </svg>
           </figure>
           <div class="three-up">
             <div class="panel"><h3>量「砂」，不只量「人」</h3><p>別人的智慧地墊只會數人頭。我們的地墊下面有凹槽，用荷重基線加上 ToF 高度，可以<strong>直接量到積了多少砂</strong>，這是我們的結構才有的優勢。踩踏用壓電條喚醒模組，平常幾乎不耗電。</p></div>
-            <div class="panel"><h3>不靠大樓的 Wi-Fi</h3><p>大廳的 Wi-Fi 常常不能用，鋁框和混凝土又會擋訊號。所以用胎壓計同款的低功耗無線，傳到一台插電的閘道器，<strong>一棟樓一台就夠</strong>。</p></div>
+            <div class="panel"><h3>不靠大樓的 Wi-Fi</h3><p>大廳的 Wi-Fi 常常不能用，鋁框和混凝土又會擋訊號。所以用 920 MHz LoRa 這類低功耗無線（跟胎壓計同樣的設計思路），傳到一台插電的閘道器，<strong>一棟樓一台就夠</strong>。</p></div>
             <div class="panel"><h3>LINE 官方帳號</h3><p>舊提案用的 LINE Notify 已經在 <strong>2025/3/31 停止服務</strong>。改用 Messaging API，只有重要警報才主動推播；查詢類用回覆訊息，不算推播則數，成本可以控制。</p></div>
           </div>
         </div>
       </section>
 
-      <!-- 07 商業模式 -->
+
+      <!-- 07 前 90 天 -->
+      <section id="start" class="slide" data-title="前 90 天">
+        <div class="wrap wide">
+          <header class="sec-head">
+            <p class="kicker"><span>07</span>怎麼開始：前 90 天</p>
+            <h2>先花 NT$1.5 萬、用 4 週，證明它真的會動；再決定下一步</h2>
+            <p class="lede">技術、業務、資金三條線一起走。每條線都有負責的人和交付的東西；第 4 週和第 13 週各有一次「要不要繼續」的決定點，由爸爸決定。</p>
+          </header>
+          <div class="first-week">
+            <h3>第一週就可以做的 5 件事</h3>
+            <ol>
+              <li><b>下單零件</b>（約 NT$1.1–1.6 萬，iCShop、台灣物聯科技都有現貨）</li>
+              <li><b>拿一片 ES302 樣品</b>放進 2 cm 深的木框，當作凹槽</li>
+              <li><b>申請 LINE 官方帳號</b>，開通 Messaging API（免費）</li>
+              <li><b>把既有安裝名單整理成表格</b>：案名、年份、物業公司、聯絡人</li>
+              <li><b>打給親戚的胎壓計工廠</b>，約一次參觀</li>
+            </ol>
+          </div>
+          <div class="gantt-wrap"><div class="gantt" id="gantt" role="table" aria-label="前 90 天甘特圖"></div></div>
+          <div class="legend-row">
+            <span class="lg tech">技術（提案人＋AI）</span>
+            <span class="lg biz">業務（董事長帶隊）</span>
+            <span class="lg fund">資金、行政</span>
+            <span class="lg dp">決定點</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 要花多少錢 -->
+      <section id="cost" class="slide" data-title="要花多少錢">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>08</span>要花多少錢</p>
+            <h2>每一筆都列出來：最壞的情況，就是停在第 0 階段，損失大約 NT$1.5 萬</h2>
+            <p class="lede">價格是 2026 年 9 月查到的台灣通路價和行情。標「查證」的是有找到原始頁面的；標「估計」的，下單前要再詢價。可以勾選要不要把選用項目算進去。</p>
+          </header>
+          <div class="budget" id="budget"></div>
+          <div class="three-up">
+            <div class="panel"><h3>政府可以補一半</h3><p><strong>SBIR Phase 1</strong>：2026 年起補助上限提高到 <strong>150 萬</strong>，最多補 50%，採簡報制、隨到隨審；送件到撥款約 4–6 個月，<strong>要先墊款</strong>。第 1、2 階段的研發費用都可以放進計畫書。</p></div>
+            <div class="panel"><h3>明年可以跟胎壓計工廠一起申請</h3><p><strong>CITD 研發聯盟</strong>：易潔寶當主導廠，加上胎壓計工廠和一個法人（例如金屬中心或工研院）。每案上限 1,000 萬，主導廠 500 萬；要自籌 50% 以上，116 年度預計在 2026 年 12 月到 2027 年 1 月公告。<small>SBIR 和 CITD 的題目要切開，不能重複請領。</small></p></div>
+            <div class="panel"><h3>上線後每個月的營運成本</h3>
+              <table class="tbl"><thead><tr><th></th><th>10 入口</th><th>100 入口</th></tr></thead>
+              <tbody><tr><td>雲端＋LINE＋Email</td><td class="num">約 700</td><td class="num">約 2,100</td></tr><tr><td>4G SIM（一棟一台閘道）</td><td class="num">約 150–550</td><td class="num">約 1,500–5,500</td></tr><tr><td>對照：月費收入</td><td class="num">25,000</td><td class="num">250,000</td></tr></tbody></table>
+              <p class="note">雲端幾乎不花錢；真正會累積的是 SIM 月租，所以<strong>一棟樓共用一台閘道器</strong>。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 找誰來做 -->
+      <section id="partners" class="slide" data-title="找誰來做">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>09</span>找誰來做</p>
+            <h2>自己做最核心、最便宜的部分；有風險的交給專業的人</h2>
+            <p class="lede">原則：軟體用 AI 自己寫（便宜、改得快）；密封、無線、量產交給胎壓計工廠（這些最難，出錯代價也最高）；法規和保險花小錢請專家看一次。</p>
+          </header>
+          <table class="partners">
+            <thead><tr><th>要做的事</th><th>找誰</th><th>大概多少錢</th><th>什麼時候</th></tr></thead>
+            <tbody>
+              <tr><th>韌體、雲端後端、儀表板、LINE 機器人</th><td><b>提案人＋AI 開發工具</b><small>第 1–3 個月：資料 API、門檻規則、LINE 推播、儀表板、月報 PDF</small></td><td>AI 工具每月約 NT$600</td><td>第 1 週起</td></tr>
+              <tr><th>模組艙密封、灌膠、IP68 測試</th><td><b>親戚的胎壓計工廠</b><small>要問：灌膠設備、IP68 測試、電池焊片、小量代工報價、有沒有 NCC 送驗經驗、能不能當 CITD 聯盟成員</small></td><td>小量每組約 NT$500–1,500</td><td>第 5 週起</td></tr>
+              <tr><th>無線與天線調校、量產測試治具</th><td><b>胎壓計工廠</b>；不夠的話找接案的射頻工程師</td><td>0–3 萬</td><td>第 6–9 週</td></tr>
+              <tr><th>電路圖與 PCB Layout 審查</th><td>接案工程師（Pro360、Tasker）</td><td>1–2 萬</td><td>第 5–6 週</td></tr>
+              <tr><th>PCB 打樣與焊接</th><td>JLCPCB，或台灣的沅橡（1 片也做）、嵌揚</td><td>每版 NT$2,500–5,000</td><td>第 6 週</td></tr>
+              <tr><th>NCC 認證</th><td>先用<strong>已取得 NCC 的無線模組</strong>只做登錄；需要時找 SGS、耕興、ETC</td><td>登錄 NT$1,500；完整送測 8–15 萬</td><td>第 2 階段前</td></tr>
+              <tr><th>4G 上網</th><td>中華電信、遠傳 IoT SIM</td><td>每張每月 NT$35–80</td><td>第 9 週</td></tr>
+              <tr><th>保險</th><td>保險經紀人：產品責任險＋公共意外責任險</td><td>每年約 1–3 萬</td><td>試點前</td></tr>
+              <tr><th>試點合約、個資條款</th><td>往來的律師；個資法 2025 年修正後，主管機關改為個資保護委員會</td><td>0.5–1.5 萬</td><td>第 6–8 週</td></tr>
+              <tr><th>補助計畫書</th><td>自己寫（SBIR 採簡報制）；需要時找顧問</td><td>顧問通常抽成，要先談好</td><td>第 3–6 週</td></tr>
+              <tr><th>研發法人（CITD 聯盟）</th><td>金屬中心（鋁材、結構）或工研院、資策會（感測、雲端）</td><td>依計畫</td><td>2027 年初</td></tr>
+            </tbody>
+          </table>
+          <aside class="insight"><b>為什麼胎壓計工廠是關鍵</b>業界的胎壓感測晶片（例如 Infineon SP49）把壓力感測、MCU、無線全部做在一顆，一顆 CR2032 電池可以撐約 10 年。胎壓計工廠每天在做的事，就是「超低功耗、事件喚醒、無線要穿過金屬、灌膠密封、車規測試」，這正是地墊模組最難的部分。<small>注意：胎壓計常用 315／433 MHz，但台灣法規對 433 MHz 限制很嚴，我們的主要鏈路要改用 920–925 MHz（LoRa AS923）或 BLE。</small></aside>
+        </div>
+      </section>
+
+      <!-- 10 怎麼賣出去 -->
+      <section id="sales" class="slide" data-title="怎麼賣出去">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="kicker"><span>10</span>怎麼賣出去</p>
+            <h2>不要一個一個跟管委會談：先找既有客戶，再透過物業公司放大</h2>
+            <p class="lede">地墊沒有法規強制保養（電梯有），所以 Alishan Care 不能單獨賣，要<strong>綁進原本就存在的合約</strong>：物業管理合約、清潔外包合約、交屋點交文件。</p>
+          </header>
+          <blockquote class="pitch">
+            「下雨天有人在大廳滑倒，管委會可能要負責。Alishan Care 會自動提醒放警示牌、派人拖地，每一次都有紀錄。那份紀錄，就是管委會『已盡注意義務』的證據。」
+            <cite>最有力的一句話。依據：雨天公共區域濕滑、沒有防滑措施時，管委會或物業公司可能依民法 §184 負賠償責任</cite>
+          </blockquote>
+          <div class="funnel" aria-label="第一年銷售漏斗">
+            <div style="--w:100%"><b>400+</b><span>官網上的既有安裝案場</span></div>
+            <div style="--w:78%"><b>60</b><span>寄「免費健檢＋清坑」，重新聯絡上</span></div>
+            <div style="--w:56%"><b>5–8</b><span>免費試點 3–6 個月（要同意具名當案例）</span></div>
+            <div style="--w:38%"><b>2–4</b><span>試點轉付費（目標 ≥ 30%）</span></div>
+            <div style="--w:26%" class="hot"><b>20</b><span>第一年付費入口（加上物業公司與建商帶進來的）</span></div>
+          </div>
+          <table class="partners segs">
+            <thead><tr><th>客群</th><th>誰決定</th><th>他在乎什麼</th><th>我們怎麼進去</th><th>多久</th></tr></thead>
+            <tbody>
+              <tr><th>既有住宅社區</th><td>管委會、總幹事</td><td>管理費不漲、滑倒責任</td><td><b>透過物業公司</b>；換算成「每戶每月約 NT$25」</td><td>1–3 個月</td></tr>
+              <tr><th>大型物業公司</th><td>事業開發、商品部</td><td>「有市場沒有人」、用科技省人力</td><td>白牌或共同品牌，<b>分潤 15–30%</b>；東京都物業一家就駐點超過 1,000 個社區</td><td>3–6 個月</td></tr>
+              <tr><th>建商（新案）</th><td>產品企劃、工務、客服</td><td>交屋品質、客訴、「智慧社區」行銷亮點</td><td><b>交屋包附「首年免費 Alishan Care」</b>，第 2 年起轉月費（照電梯保固轉保養）</td><td>6–18 個月</td></tr>
+              <tr><th>建築師</th><td>設計部、規範工程師</td><td>沒時間寫小項規範</td><td>提供<b>可以直接貼上的規範範本</b>（CSI 12 48 13、性能條款、「或同等品」）；跟公會合辦研習講座</td><td>寫進規範後 2–4 年</td></tr>
+              <tr><th>醫院</th><td>總務室、感控室</td><td>跌倒是病安指標、評鑑</td><td>總務室的廠商試用程序；用數據支援評鑑</td><td>3–12 個月</td></tr>
+              <tr><th>科技廠</th><td>廠務、EHS</td><td>帶塵、工安、供應商資格</td><td>從既有廠區的施工窗口切入</td><td>6–12 個月</td></tr>
+              <tr><th>商辦、WELL／LEED 案</th><td>工務、FM、綠建築顧問</td><td>WELL A09 入口系統、LEED 要求外包每週維護</td><td>給顧問一份「WELL A09／LEED 合規包」</td><td>3–9 個月</td></tr>
+            </tbody>
+          </table>
+          <div class="three-up">
+            <div class="panel"><h3>照抄電梯業</h3><p>崇友電梯的保養約占營收 5 成，<strong>保養毛利約 46%，新梯只有約 12%</strong>。做法就是新梯附免費保固，期滿轉成保養月費。電梯保養分半責（NT$2,500–3,500／月）和全責（NT$5,000–6,500／月），Alishan Care 也照這樣分級。</p></div>
+            <div class="panel"><h3>一頁試點協議</h3><ul class="bullets"><li>3–6 個月免費；對方要同意提供數據、具名當案例</li><li>事先講好成功指標：拖地次數與工時減少多少、警報多久有人處理、滑倒事件數</li><li>期滿以事先講好的價格轉付費；不續約的話，感測器回收</li><li>只收環境數據，不拍照、不錄影</li></ul></div>
+            <div class="panel"><h3>近期的行銷時間點</h3><ul class="bullets"><li><b>10/30</b>：智慧城市展 2027 早鳥報名截止</li><li><b>12/10–13</b>：台北建材展（南港）；今年攤位已額滿，先去參觀、約建築師見面</li><li><b>2027 年 1 月</b>：建材展前屆廠商優先報名</li><li>拍 3 支案例影片：雨天前後對比、清坑過程、數據報表</li></ul></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 商業模式 -->
       <section id="model" class="slide" data-title="商業模式">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>07</span>商業模式</p>
+            <p class="kicker"><span>11</span>商業模式</p>
             <h2>從一次性工程款，變成「一次＋每個月」</h2>
             <p class="lede">地墊還是照樣賣，只是多了一層服務。客戶每個月付的錢，換到的是「不用再操心入口」。</p>
           </header>
@@ -319,8 +437,8 @@
             </article>
             <article class="tier hero">
               <p class="tname">Alishan Care<small>訂閱・主力</small></p>
-              <p class="tprice"><b>NT$2,500</b>／入口／月 起</p>
-              <ul><li>24 小時監測，LINE 警報與派工</li><li>凹槽定期清潔（依積砂量安排，不是固定排程）</li><li>毯條依磨耗自動排程更換</li><li>每月 ESG／WELL 維護報表</li></ul>
+              <p class="tprice">照電梯保養分三級（每入口每月，試點時驗證）</p>
+              <ul class="care-tiers"><li><b>基本</b>NT$1,500<span>監測、LINE 警報、每季清坑</span></li><li><b>標準</b>NT$2,500<span>依積砂量派工、反應時間承諾、ESG／WELL 月報</span></li><li><b>全責</b>NT$4,500<span>再加上毯條依磨耗更換、年度稽核資料</span></li></ul>
             </article>
             <article class="tier">
               <p class="tname">Alishan Data<small>數據</small></p>
@@ -336,17 +454,18 @@
               <tr><th>換毯條</th><td>客戶想到才打來（10–15 年）</td><td>系統依磨耗預測，自動排程</td></tr>
               <tr><th>競爭方式</th><td>很容易被比價</td><td>比的是服務和數據，同業很難跟進</td></tr>
               <tr><th>公司價值</th><td>看今年接了多少案</td><td>看<strong>年經常性收入（ARR）</strong>，估值倍數更高</td></tr>
+              <tr><th>業界先例</th><td>電梯新梯毛利約 12%</td><td>電梯保養毛利約 <strong>46%</strong>（崇友），保養約占營收一半</td></tr>
             </tbody>
           </table>
           <aside class="insight"><b>第一批客戶不用去外面找</b>官網上 400+ 個既有案場（機場、醫院、科技廠、建商公設），就是改裝套件＋Alishan Care 最好的名單。他們已經信任我們的地墊。</aside>
         </div>
       </section>
 
-      <!-- 08 財務試算 -->
+      <!-- 12 財務試算 -->
       <section id="roi" class="slide" data-title="財務試算">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>08</span>算給爸爸看</p>
+            <p class="kicker"><span>12</span>算給爸爸看</p>
             <h2>三年財務試算：每一個數字都可以自己調</h2>
             <p class="lede">預設值刻意抓得保守。拉動滑桿，就能看到回本時間和年經常性收入的變化。</p>
           </header>
@@ -368,11 +487,11 @@
         </div>
       </section>
 
-      <!-- 09 為什麼是我們 -->
+      <!-- 13 為什麼是我們 -->
       <section id="why" class="slide" data-title="為什麼是我們">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>09</span>為什麼是我們、為什麼是現在</p>
+            <p class="kicker"><span>13</span>為什麼是我們、為什麼是現在</p>
             <h2>這件事，換成別人來做會很難</h2>
           </header>
           <div class="why">
@@ -395,58 +514,62 @@
         </div>
       </section>
 
-      <!-- 10 風險 -->
+      <!-- 14 風險 -->
       <section id="risk" class="slide" data-title="風險與對策">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>10</span>可行性與風險</p>
+            <p class="kicker"><span>14</span>可行性與風險</p>
             <h2>每一個風險都有對策，也都有辦法先用小錢驗證</h2>
           </header>
           <table class="risk">
             <thead><tr><th>風險</th><th>對策</th><th>怎麼驗證</th></tr></thead>
             <tbody>
-              <tr><th>訊號被鋁框、混凝土擋住</th><td>模組艙用非金屬天線窗；Sub-GHz 穿透力好；閘道器放在大廳</td><td>第 0 階段第一週就實測訊號強度</td></tr>
+              <tr><th>訊號被鋁框、混凝土擋住</th><td>模組艙用非金屬天線窗；920 MHz LoRa 穿透力好；閘道器放在大廳</td><td>第 0 階段第一週就實測訊號強度</td></tr>
               <tr><th>泥水、清潔劑、踩踏</th><td>胎壓計等級灌膠，做到 IP68；模組放在邊框端，不在踩踏面</td><td>浸水、沖洗、荷重測試各做一輪</td></tr>
               <tr><th>電池撐不久</th><td>平常睡眠；壓電條被踩到才喚醒模組；荷重每小時才量一次；數據累積後批次上傳</td><td>實測平均電流，推算電池壽命</td></tr>
               <tr><th>分不出是人重還是砂重</th><td>踩踏由壓電條偵測；荷重只在沒人踩的時候量基線，再用 ToF 高度交叉比對</td><td>試點時人工秤砂，跟系統數字比對</td></tr>
               <tr><th>客戶不買單</th><td>先找既有的好客戶免費試用 3 個月，用數據說服</td><td>試點轉付費率 ≥ 30%</td></tr>
+              <tr><th>地墊沒有法規強制保養</th><td>不單獨賣；綁進物業管理、清潔外包、交屋點交的合約；主打滑倒責任的舉證紀錄</td><td>跟 2 家物業公司談出分潤條件</td></tr>
+              <tr><th>無線頻段與 NCC</th><td>用 920–925 MHz（LoRa AS923）或 BLE，不用 433 MHz；優先選已取得 NCC 的模組，只要登錄</td><td>下單前到 NCC 網站查模組型號</td></tr>
+              <tr><th>補助時程</th><td>SBIR 送件到撥款約 4–6 個月，要先墊款；第 0 階段不依賴補助</td><td>第 3–6 週送件</td></tr>
               <tr><th>影響本業</th><td>分階段、小額投入；每個階段都用數字決定要不要繼續</td><td>每月一次進度報告</td></tr>
-              <tr><th>LINE 訊息費用</th><td>只推播重要警報；查詢用免費的回覆訊息；另外有每日摘要</td><td>每個入口每月推播少於 10 則</td></tr>
+              <tr><th>LINE 訊息費用</th><td>2026/11 起中用量 NT$1,000 且不能加購；群組推播依人數計算 → 警報只推給負責的人，查詢用免費的回覆訊息，另有 Email 備援</td><td>每個入口每月推播少於 20 則</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <!-- 11 路線圖 -->
+      <!-- 15 路線圖 -->
       <section id="roadmap" class="slide" data-title="路線圖">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>11</span>路線圖</p>
+            <p class="kicker"><span>15</span>路線圖</p>
             <h2>一步一步爬，每一站都可以停下來檢查</h2>
           </header>
           <ol class="phases">
-            <li><p class="ph">第 0 階段<small>第 1 個月・&lt; NT$1 萬</small></p><h4>桌上原型</h4><p>一片 ES302 樣品，加上 ESP32、壓電條、荷重元和濕度感測器。人踩上去，手機就收到 LINE 通知。</p><p class="gate">要繼續的條件：人次誤差 &lt; 5%，積砂能量到 50 g 的變化</p></li>
-            <li><p class="ph">第 1 階段<small>第 2–4 個月・NT$10–30 萬</small></p><h4>密封模組＋自家門口</h4><p>跟親戚工廠一起做 5 組模組艙，裝在公司門口和 2 個友好案場。</p><p class="gate">要繼續的條件：連續 60 天不斷線，推算電池能撐 2 年以上</p></li>
-            <li><p class="ph">第 2 階段<small>第 5–12 個月・NT$50–100 萬</small></p><h4>付費試點</h4><p>10–30 個入口，跟綠建築顧問合作，Alishan Care 正式開賣。</p><p class="gate">要繼續的條件：試點轉付費 ≥ 30%，每個入口每月毛利 ≥ NT$1,000</p></li>
-            <li><p class="ph">第 3 階段<small>第 2 年起</small></p><h4>標配化</h4><p>新案都把 Smart 當選配推出，改裝套件上市，推出 Alishan Data，再延伸到雪山、象山系列。</p></li>
+            <li><p class="ph">第 0 階段<small>第 1 個月・約 NT$1.1–1.6 萬</small></p><h4>桌上原型</h4><p>一片 ES302 樣品，加上 ESP32、壓電條、荷重元和濕度感測器。人踩上去，手機就收到 LINE 通知。</p><p class="gate">要繼續的條件：人次誤差 &lt; 5%，積砂能量到 50 g 的變化</p></li>
+            <li><p class="ph">第 1 階段<small>第 2–4 個月・約 NT$6–18 萬</small></p><h4>密封模組＋自家門口</h4><p>跟胎壓計工廠一起做 5 組灌膠模組艙，裝在公司門口和 2 個友好案場。同時送 SBIR Phase 1。</p><p class="gate">要繼續的條件：連續 60 天不斷線，推算電池能撐 2 年以上</p></li>
+            <li><p class="ph">第 2 階段<small>第 5–12 個月・約 NT$27–70 萬（SBIR 可補一半）</small></p><h4>付費試點</h4><p>10–30 個入口；跟 1–2 家物業公司談白牌或分潤；建商交屋包附首年服務；Alishan Care 開賣。</p><p class="gate">要繼續的條件：試點轉付費 ≥ 30%，每個入口每月毛利 ≥ NT$1,000</p></li>
+            <li><p class="ph">第 3 階段<small>第 2 年起</small></p><h4>標配化</h4><p>新案都把 Smart 當選配推出，改裝套件上市，推出 Alishan Data，再延伸到雪山、象山系列。2027 年初跟胎壓計工廠申請 CITD 研發聯盟。</p></li>
           </ol>
         </div>
       </section>
 
-      <!-- 12 決定 -->
+      <!-- 16 決定 -->
       <section id="ask" class="slide ask" data-title="今天的決定">
         <div class="wrap">
           <header class="sec-head">
-            <p class="kicker"><span>12</span>今天想請爸爸決定的事</p>
+            <p class="kicker"><span>16</span>今天想請爸爸決定的事</p>
             <h2>不用一次押大注，只要讓我們先走第一步</h2>
           </header>
           <ol class="asks">
-            <li><b>同意啟動第 0 階段</b><span>一個月內、預算一萬元以內，做出會發 LINE 的原型</span></li>
+            <li><b>同意啟動第 0 階段</b><span>4 週、約 NT$1.5 萬，做出一片會發 LINE 的原型。最壞的情況就是損失這筆錢</span></li>
             <li><b>給我一片 ES302 樣品和公司門口</b><span>當作第一個試點</span></li>
-            <li><b>幫忙牽線親戚的胎壓計工廠</b><span>先談模組艙的密封和量產可行性</span></li>
-            <li><b>一起挑 2 個關係好的既有案場</b><span>讓我去談 3 個月的免費試點</span></li>
+            <li><b>幫忙牽線親戚的胎壓計工廠</b><span>第 5 週開始談模組艙的密封；之後可以一起申請 CITD</span></li>
+            <li><b>爸爸出面約 1–2 家往來最深的建商或物業公司</b><span>從既有安裝名單裡挑 5–8 個免費試點</span></li>
+            <li><b>同意用公司名義申請 SBIR Phase 1</b><span>政府最多補一半（上限 150 萬），第 1、2 階段的研發費用都可以放進去</span></li>
           </ol>
-          <p class="promise">我負責的：每個月一次進度報告，用數字說話；每個階段結束都由爸爸決定要不要繼續。</p>
+          <p class="promise">我負責的：每週五一頁進度，每月一次報告，用數字說話；第 4 週和第 13 週的決定點，都由爸爸決定要不要繼續。</p>
           <p class="signoff">阿里山的日出，要先爬上去才看得到。</p>
         </div>
       </section>

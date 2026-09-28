@@ -1,4 +1,5 @@
 import { initRoiSection } from './ui/roiSection.js';
+import { initPlanSection } from './ui/planSection.js';
 
 const $ = (s) => document.querySelector(s);
 const slides = [...document.querySelectorAll('section.slide')];
@@ -122,4 +123,5 @@ lazy($('#entranceViewer'), async () => {
 });
 
 initRoiSection();
+initPlanSection();
 addEventListener('themechange', () => dispatchEvent(new Event('resize')));

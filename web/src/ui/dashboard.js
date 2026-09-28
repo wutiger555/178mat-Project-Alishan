@@ -47,7 +47,7 @@ export function createDashboard(sims, { onSelect, onAccept, onComplete }) {
     <div class="kpi"><p class="l">濕滑風險</p><p class="v" data-k="moist">低</p><div class="meter"><i data-k="moistBar"></i></div><p class="d">由濕度＋人流推估</p></div>
     <div class="kpi"><p class="l">毯條壽命</p><p class="v" data-k="life">0%</p><div class="meter"><i data-k="lifeBar"></i></div><p class="d">依累計踩踏次數</p></div>
     <div class="kpi"><p class="l">模組電量</p><p class="v" data-k="batt">0%</p><div class="meter"><i data-k="battBar"></i></div><p class="d" data-k="battSub">預估還能用 4 年</p></div>
-    <div class="kpi"><p class="l">連線</p><p class="v" data-k="link"><span class="status">正常</span></p><p class="d" data-k="linkSub">Sub-GHz → 閘道器</p></div>`;
+    <div class="kpi"><p class="l">連線</p><p class="v" data-k="link"><span class="status">正常</span></p><p class="d" data-k="linkSub">920 MHz LoRa → 閘道器</p></div>`;
   const K = {};
   kpis.querySelectorAll('[data-k]').forEach((n) => (K[n.dataset.k] = n));
 
