@@ -1,0 +1,13 @@
+{
+  "name": "alishan-print",
+  "private": true,
+  "type": "module",
+  "description": "列印版 PDF：阿里山計畫提案書",
+  "scripts": {
+    "capture": "node capture.mjs",
+    "pdf": "node build-pdf.mjs"
+  },
+  "dependencies": {
+    "@fontsource/noto-sans-tc": "^5.2.6"
+  }
+}

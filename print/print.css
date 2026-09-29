@@ -1,0 +1,498 @@
+/* 列印版 A4 樣式 */
+:root {
+  --ink: #16181b;
+  --ink-2: #4a4d53;
+  --muted: #7d8088;
+  --line: #d9d7d0;
+  --soft: #f3f2ee;
+  --accent: #0f6e56;
+  --accent-soft: #e6f1ed;
+  --accent-2: #e0702f;
+  --warn: #b5471b;
+}
+@page {
+  size: A4;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  margin: 0;
+  font-family: 'Noto Sans TC', 'WenQuanYi Zen Hei', sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.65;
+  color: var(--ink);
+}
+h1 {
+  font-size: 21pt;
+  line-height: 1.3;
+  margin: 0 0 6pt;
+}
+h2 {
+  font-size: 13.5pt;
+  margin: 16pt 0 6pt;
+  padding-left: 8pt;
+  border-left: 4pt solid var(--accent);
+  break-after: avoid;
+}
+h2 small {
+  display: block;
+  font-size: 9.5pt;
+  font-weight: 400;
+  color: var(--ink-2);
+}
+h3 {
+  font-size: 13pt;
+  margin: 0 0 4pt;
+}
+h3 small {
+  font-size: 9.5pt;
+  font-weight: 400;
+  color: var(--ink-2);
+  margin-left: 8pt;
+}
+p {
+  margin: 0 0 6pt;
+}
+ul,
+ol {
+  margin: 0 0 8pt;
+  padding-left: 1.4em;
+}
+li {
+  margin-bottom: 2pt;
+}
+b,
+strong {
+  font-weight: 700;
+}
+small,
+.small {
+  font-size: 8.8pt;
+  color: var(--ink-2);
+}
+.kicker {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 10pt;
+  letter-spacing: 0.08em;
+  margin-bottom: 4pt;
+}
+.lede {
+  color: var(--ink-2);
+  font-size: 11.5pt;
+  margin-bottom: 12pt;
+}
+.chapter,
+.summary,
+.toc {
+  break-before: page;
+}
+
+/* 封面 */
+.cover {
+  position: relative;
+  height: 257mm;
+  padding-top: 40mm;
+  overflow: hidden;
+}
+.cover .ridges {
+  position: absolute;
+  left: -15mm;
+  right: -15mm;
+  bottom: 0;
+  width: calc(100% + 30mm);
+  height: 45%;
+}
+.cover h1 {
+  font-size: 40pt;
+  line-height: 1.1;
+  margin-bottom: 14pt;
+}
+.cover h1 span {
+  font-size: 26pt;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+.cover .lede {
+  font-size: 14pt;
+  max-width: 140mm;
+}
+.cover .meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3pt 12pt;
+  margin-top: 18mm;
+  font-size: 11pt;
+}
+.cover .meta dt {
+  color: var(--muted);
+}
+.cover .meta dd {
+  margin: 0;
+}
+
+/* 摘要、目錄 */
+.summary .big {
+  font-size: 13pt;
+  line-height: 1.7;
+}
+.toc ol {
+  list-style: none;
+  padding: 0;
+  font-size: 12pt;
+}
+.toc li {
+  padding: 6pt 0;
+  border-bottom: 1px dotted var(--line);
+}
+.toc li span {
+  display: inline-block;
+  width: 26mm;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* 數字方塊 */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6pt;
+  margin: 8pt 0 12pt;
+  break-inside: avoid;
+}
+.stats div {
+  background: var(--soft);
+  border-radius: 6pt;
+  padding: 8pt 10pt;
+}
+.stats b {
+  display: block;
+  font-size: 14pt;
+  color: var(--accent);
+  line-height: 1.25;
+}
+.stats span {
+  font-size: 8.8pt;
+  color: var(--ink-2);
+}
+
+/* 表格 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6pt 0 10pt;
+  font-size: 9.5pt;
+  line-height: 1.5;
+}
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 4pt 6pt;
+  text-align: left;
+  vertical-align: top;
+}
+thead th {
+  background: var(--accent-soft);
+  font-weight: 700;
+}
+tbody th {
+  font-weight: 700;
+  background: #faf9f6;
+}
+tr {
+  break-inside: avoid;
+}
+thead {
+  display: table-header-group;
+}
+table.narrow {
+  width: 75%;
+}
+table.small-t,
+table.budget {
+  font-size: 8.8pt;
+}
+table.budget td:nth-child(2) {
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* 圖 */
+figure {
+  margin: 6pt 0 10pt;
+  break-inside: avoid;
+}
+figure img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 4pt;
+  display: block;
+}
+figcaption {
+  font-size: 8.8pt;
+  color: var(--ink-2);
+  margin-top: 3pt;
+}
+figure.mid {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8pt;
+}
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6pt;
+}
+
+/* 提示框 */
+aside {
+  margin: 8pt 0 10pt;
+  padding: 8pt 12pt;
+  border-radius: 6pt;
+  border-left: 4pt solid var(--accent);
+  background: var(--accent-soft);
+  break-inside: avoid;
+}
+aside b:first-child {
+  display: block;
+  color: var(--accent);
+  margin-bottom: 2pt;
+}
+aside.warn {
+  border-left-color: var(--warn);
+  background: #fbeee7;
+}
+aside.warn b:first-child {
+  color: var(--warn);
+}
+aside.pitch {
+  border-left-color: var(--accent-2);
+  background: #fdf3ec;
+  font-size: 11.5pt;
+  font-weight: 700;
+}
+aside.pitch b:first-child {
+  color: var(--accent-2);
+}
+aside.pitch small {
+  font-weight: 400;
+}
+
+/* 感測器頁 */
+.sensor {
+  border: 1px solid var(--line);
+  border-radius: 6pt;
+  padding: 10pt 12pt;
+  margin: 8pt 0 12pt;
+  break-inside: avoid;
+}
+.sensor .what {
+  font-weight: 700;
+}
+.sensor .diagram {
+  background: var(--soft);
+  border-radius: 6pt;
+  padding: 4pt;
+  margin: 6pt 0;
+  width: 70%;
+}
+.sensor dl {
+  display: grid;
+  grid-template-columns: 26mm 1fr;
+  gap: 3pt 8pt;
+  margin: 0;
+  font-size: 9.5pt;
+}
+.sensor dt {
+  font-weight: 700;
+  color: var(--accent);
+}
+.sensor dd {
+  margin: 0;
+}
+.sensor dd ul {
+  margin: 0;
+}
+
+/* 原理圖（沿用網頁 SVG 的 class） */
+.dg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.dg text {
+  font-family: 'Noto Sans TC', 'WenQuanYi Zen Hei', sans-serif;
+  text-anchor: middle;
+}
+.dg-t {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+.dg-t.sm {
+  font-size: 11px;
+}
+.dg-t.light {
+  fill: #fff;
+}
+.dg-s {
+  font-size: 10.5px;
+  fill: var(--ink-2);
+}
+.dg-op {
+  font-size: 16px;
+  font-weight: 700;
+  fill: var(--muted);
+}
+.dg-alu {
+  fill: #c3c8cf;
+}
+.dg-carrier {
+  fill: #2e7d74;
+}
+.dg-film {
+  fill: #e0a53c;
+}
+.dg-arrow,
+.dg-wire {
+  stroke: var(--accent-2);
+  stroke-width: 2;
+  fill: none;
+}
+.dg-comp {
+  fill: #fff;
+  stroke: var(--ink-2);
+  stroke-width: 1.5;
+}
+.dg-mcu {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.dg-box {
+  fill: #fff;
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+.dg-fpc {
+  fill: #b87a22;
+}
+.dg-cu {
+  fill: #e9b86a;
+}
+.dg-field {
+  fill: none;
+  stroke: #15b8a6;
+  stroke-width: 1.3;
+  stroke-dasharray: 3 3;
+}
+.dg-sand {
+  fill: #a8875c;
+}
+.dg-water {
+  fill: #5aa9e6;
+  opacity: 0.45;
+}
+.dg-pin {
+  fill: #b7c0c9;
+  stroke: var(--ink-2);
+  stroke-width: 0.8;
+}
+.dg-nfc {
+  fill: #1f5fbf;
+}
+.dg-phone {
+  fill: var(--ink);
+}
+.dg-screen {
+  fill: #7cc4ff;
+}
+.dg-window {
+  fill: #1a1d21;
+}
+.dg-pot {
+  fill: #d59a3a;
+  opacity: 0.55;
+}
+.dg-pcb {
+  fill: #1f7a3f;
+}
+.dg-bat-bay {
+  fill: #fff;
+  stroke: var(--line);
+}
+.dg-bat {
+  fill: #4d6fb3;
+}
+
+/* 決定 */
+.asks {
+  list-style: none;
+  padding: 0;
+  counter-reset: a;
+}
+.asks li {
+  counter-increment: a;
+  position: relative;
+  padding: 8pt 10pt 8pt 34pt;
+  margin-bottom: 6pt;
+  border: 1px solid var(--line);
+  border-radius: 6pt;
+  break-inside: avoid;
+}
+.asks li::before {
+  content: counter(a);
+  position: absolute;
+  left: 10pt;
+  top: 8pt;
+  width: 16pt;
+  height: 16pt;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 9pt;
+  text-align: center;
+  line-height: 16pt;
+}
+.asks b {
+  display: block;
+  font-size: 11.5pt;
+}
+.asks span {
+  color: var(--ink-2);
+}
+.promise {
+  font-weight: 700;
+  margin-top: 10pt;
+}
+.signoff {
+  font-size: 15pt;
+  font-weight: 700;
+  color: var(--accent-2);
+  margin-top: 16pt;
+}
+.sign {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12pt;
+  margin-top: 20mm;
+}
+.sign div {
+  border-bottom: 1px solid var(--ink-2);
+  padding-bottom: 28mm;
+  color: var(--ink-2);
+}
+.src li {
+  font-size: 9pt;
+}

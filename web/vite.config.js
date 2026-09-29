@@ -19,7 +19,7 @@ export default defineConfig({
   ],
   build: {
     outDir: '../dist',
-    emptyOutDir: true,
+    emptyOutDir: false, // dist/ 也放列印版 PDF，不要清空
     target: 'es2020',
     chunkSizeWarningLimit: 3000,
   },
