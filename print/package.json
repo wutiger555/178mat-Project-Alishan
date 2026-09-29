@@ -5,7 +5,8 @@
   "description": "列印版 PDF：阿里山計畫提案書",
   "scripts": {
     "capture": "node capture.mjs",
-    "pdf": "node build-pdf.mjs"
+    "pdf": "node build-pdf.mjs",
+    "kit": "node build-kit.mjs && python3 tools/build_xlsx.py"
   },
   "dependencies": {
     "@fontsource/noto-sans-tc": "^5.2.6"
